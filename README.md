@@ -1,7 +1,14 @@
 # CineBook — Movie Ticket Booking System
 ## Refactored Six-Member Modular Java Swing Desktop Application
 
-CineBook is a desktop movie ticket booking system built using Java Swing and standard Java SE libraries. This codebase has been refactored into **six team modules** corresponding to the responsibilities of a six-member student project group.
+CineBook is a desktop movie ticket booking system built using Java Swing and standard Java SE libraries. The codebase is organized into **six team modules** corresponding to a clean functional division of responsibilities:
+
+1. **Member 1 — Movie Management**
+2. **Member 2 — Show & Schedule Management**
+3. **Member 3 — Seat Selection & Pricing**
+4. **Member 4 — Booking & Cancellation**
+5. **Member 5 — Payment & Transaction Management**
+6. **Member 6 — Main UI, Application Integration & Administration**
 
 ---
 
@@ -18,7 +25,7 @@ cd "c:\Users\Admin\Desktop\Joseph\OOP Project"
 ```bash
 javac CineBookApp.java
 ```
-*Compiling `CineBookApp.java` automatically discovers, resolves, and compiles all 44 modular source files.*
+*Compiling `CineBookApp.java` automatically discovers, resolves, and compiles all 45 modular source files.*
 
 ### Step 3: Run the Application
 ```bash
@@ -37,43 +44,44 @@ java CineBookApp --test-only
 
 ```
 CineBook/
-├── CineBookApp.java                  [Module 5: Entry point & test verification]
-├── MainFrame.java                    [Module 5: Window frame & navigation]
-├── UIConstants.java                  [Module 5: Common styling, fonts, colors]
-│
 ├── Movie.java                        [Module 1: Movie domain model]
-├── Screen.java                       [Module 1: Theater screen configuration]
-├── Show.java                         [Module 1: Screening & showtime model]
-├── MovieService.java                 [Module 1: Catalogue searching & CRUD]
-├── MoviePanel.java                   [Module 1: Screen 1 movie browsing UI]
-├── MovieDetailsPanel.java            [Module 1: Screen 2 show selection UI]
+├── MovieService.java                 [Module 1: Catalogue searching, filtering & movie CRUD]
+├── MoviePanel.java                   [Module 1: Screen 1 movie catalogue browsing UI]
 │
-├── Seat.java                         [Module 2: Seat entity with pricing tier]
-├── SeatStatus.java                   [Module 2: AVAILABLE, SELECTED, RESERVED, BOOKED]
-├── SeatCategory.java                 [Module 2: STANDARD, PREMIUM, VIP tiers]
-├── SeatManager.java                  [Module 2: Seat state transitions & expiry]
-├── SeatSelectionPanel.java           [Module 2: Screen 3 interactive seating grid]
+├── Show.java                         [Module 2: Screening & showtime model]
+├── Screen.java                       [Module 2: Theater auditorium/screen configuration]
+├── ShowService.java                  [Module 2: Showtime scheduling, querying & removal]
+├── MovieDetailsPanel.java            [Module 2: Screen 2 show selection & timeslots UI]
 │
-├── Booking.java                      [Module 3: Booking record model]
-├── BookingStatus.java                [Module 3: PENDING, CONFIRMED, FAILED, CANCELLED]
-├── Cancellable.java                  [Module 3: Cancellation contract interface]
-├── BookingService.java               [Module 3: Reservation, confirmation & refund logic]
-├── BookingHistoryPanel.java          [Module 3: Screen 6 my bookings & e-ticket modal]
-├── BookingConfirmationPanel.java     [Module 3: Screen 5 confirmation receipt UI]
+├── Seat.java                         [Module 3: Seat entity with pricing tier multiplier]
+├── SeatStatus.java                   [Module 3: AVAILABLE, SELECTED, RESERVED, BOOKED]
+├── SeatCategory.java                 [Module 3: STANDARD, PREMIUM, VIP tiers]
+├── SeatManager.java                  [Module 3: Seat state transitions, holds & expiry]
+├── SeatSelectionPanel.java           [Module 3: Screen 3 interactive seating grid & live totals]
 │
-├── PaymentStatus.java                [Module 4: Payment status lifecycle enum]
-├── PaymentMethod.java                [Module 4: Abstract payment strategy base]
-├── MockCardPayment.java              [Module 4: Credit/Debit card simulation]
-├── MockUpiPayment.java               [Module 4: UPI Instant pay simulation]
-├── MockWalletPayment.java            [Module 4: Digital wallet simulation]
-├── PaymentGateway.java               [Module 4: Payment gateway interface]
-├── LegacyBankGatewayApi.java         [Module 4: Third-party legacy banking API]
-├── LegacyBankResult.java             [Module 4: Legacy bank response structure]
-├── LegacyBankGatewayAdapter.java     [Module 4: Adapter design pattern implementation]
-├── PaymentTransaction.java           [Module 4: Financial ledger transaction record]
-├── PaymentProcessor.java             [Module 4: Payment execution coordinator]
-├── CheckoutPanel.java                [Module 4: Screen 4 checkout & outcome simulator]
+├── Booking.java                      [Module 4: Booking record model]
+├── BookingStatus.java                [Module 4: PENDING, CONFIRMED, FAILED, CANCELLED]
+├── Cancellable.java                  [Module 4: Cancellation contract interface]
+├── BookingService.java               [Module 4: Reservation, confirmation & refund logic]
+├── BookingHistoryPanel.java          [Module 4: Screen 6 my bookings & e-ticket modal]
+├── BookingConfirmationPanel.java     [Module 4: Screen 5 confirmation receipt UI]
 │
+├── PaymentStatus.java                [Module 5: Payment status lifecycle enum]
+├── PaymentMethod.java                [Module 5: Abstract payment strategy base]
+├── MockCardPayment.java              [Module 5: Credit/Debit card simulation]
+├── MockUpiPayment.java               [Module 5: UPI Instant pay simulation]
+├── MockWalletPayment.java            [Module 5: Digital wallet simulation]
+├── PaymentGateway.java               [Module 5: Payment gateway interface]
+├── LegacyBankGatewayApi.java         [Module 5: Third-party legacy banking API]
+├── LegacyBankResult.java             [Module 5: Legacy bank response structure]
+├── LegacyBankGatewayAdapter.java     [Module 5: Adapter design pattern implementation]
+├── PaymentTransaction.java           [Module 5: Financial ledger transaction record]
+├── PaymentProcessor.java             [Module 5: Payment execution coordinator]
+├── CheckoutPanel.java                [Module 5: Screen 4 checkout & outcome simulator]
+│
+├── CineBookApp.java                  [Module 6: Entry point & test verification]
+├── MainFrame.java                    [Module 6: Window frame, navigation & integration]
+├── UIConstants.java                  [Module 6: Common styling, fonts, colors, formatters]
 ├── User.java                         [Module 6: Base user authentication entity]
 ├── Customer.java                     [Module 6: Customer account profile]
 ├── AdminUser.java                    [Module 6: Administrator role profile]
@@ -94,36 +102,26 @@ CineBook/
 
 ```mermaid
 graph TD
-    M5[Module 5: MainFrame & CineBookApp] --> M1[Module 1: Movie & Show]
-    M5 --> M2[Module 2: Seat & Pricing]
-    M5 --> M3[Module 3: Booking & Cancellation]
-    M5 --> M4[Module 4: Payment & Transactions]
-    M5 --> M6[Module 6: Admin & BookingManager]
+    M6[Module 6: MainFrame, Admin & State] --> M1[Module 1: Movie Management]
+    M6 --> M2[Module 2: Show Management]
+    M6 --> M3[Module 3: Seat & Pricing]
+    M6 --> M4[Module 4: Booking & Cancellation]
+    M6 --> M5[Module 5: Payment & Transactions]
 
     M1 --> M6
     M2 --> M1
+    M2 --> M6
     M3 --> M2
-    M3 --> M6
     M4 --> M3
     M4 --> M6
-    M6 --> M1
+    M5 --> M4
+    M5 --> M6
 ```
 
 1. **Shared State Access:** `BookingManager` (Module 6) serves as the in-memory Singleton. It owns the central collections of movies, screens, shows, bookings, users, and transactions.
-2. **Browsing Flow (Module 1 $\rightarrow$ Module 2):** When a user browses movies via `MoviePanel` and selects a showtime in `MovieDetailsPanel`, `MainFrame` (Module 5) coordinates navigation to `SeatSelectionPanel` (Module 2).
-3. **Seat Hold Flow (Module 2 $\rightarrow$ Module 3):** Clicking "Proceed to Checkout" in `SeatSelectionPanel` calls `BookingService.createPendingReservation(...)` (Module 3), which coordinates with `SeatManager` (Module 2) to lock selected seats into `RESERVED` state for 5 minutes.
-4. **Checkout Flow (Module 3 $\rightarrow$ Module 4):** `MainFrame` transfers the pending `Booking` to `CheckoutPanel` (Module 4). `PaymentProcessor` executes the chosen strategy (`MockCardPayment`, `MockUpiPayment`, `MockWalletPayment`, or `LegacyBankGatewayAdapter`), creating a `PaymentTransaction` and invoking `BookingService.confirmBooking(...)` upon success.
-5. **Cancellation & Expiry (Module 3 $\rightarrow$ Module 2):** When a booking is cancelled or a checkout timer expires, `BookingService` delegates to `SeatManager.releaseSeats(...)`, ensuring seats are immediately freed.
-6. **Administration (Module 6):** `AdminPanel` interacts with `MovieService` and `BookingManager` to schedule shows, inspect bookings, and audit revenue without exposing internal mutable collections directly.
-
----
-
-## 4. Key Object-Oriented Principles & Design Patterns
-
-1. **Singleton Pattern (`BookingManager`):** Double-checked locking with a `volatile` reference ensures a single, thread-safe repository across all screens.
-2. **Strategy Pattern (`PaymentMethod`):** Polymorphic `executeTransaction(amount)` allows dynamic runtime substitution of Card, UPI, and Wallet payment algorithms.
-3. **Adapter Pattern (`LegacyBankGatewayAdapter`):** Implements `PaymentGateway` by adapting `LegacyBankGatewayApi`, converting legacy bank responses into standard `PaymentTransaction` models.
-4. **Encapsulation & Data Hiding:** Model fields are `private final` where appropriate, using defensive copies and unmodifiable collections (`Collections.unmodifiableList`).
-5. **Interface Segregation:** Distinct behavioral interfaces: `Cancellable`, `Searchable<T>`, and `PaymentGateway`.
-6. **Defensive Concurrency & Safe Guards:** Synchronized booking operations prevent race conditions, and a safe deletion guard blocks movie deletion if active bookings exist.
-7. **Recursion:** `countTotalBookedSeatsRecursive(...)` computes aggregate booked seat metrics over transactional object graphs.
+2. **Movie to Showtimes (Module 1 $\rightarrow$ Module 2):** When a user browses movies via `MoviePanel` (Module 1) and clicks "View Details & Shows", `MainFrame` (Module 6) navigates to `MovieDetailsPanel` (Module 2). `MovieDetailsPanel` queries `ShowService` (Module 2) for the specific movie's active showtimes.
+3. **Showtimes to Seat Selection (Module 2 $\rightarrow$ Module 3):** Selecting a showtime passes the `Show` object into `SeatSelectionPanel` (Module 3). `SeatSelectionPanel` renders the show's independent 2D seat grid and calculates subtotal, GST, and tier multipliers.
+4. **Seat Selection to Reservation Hold (Module 3 $\rightarrow$ Module 4):** Clicking "Proceed to Checkout" invokes `BookingService.createPendingReservation(...)` (Module 4). `BookingService` delegates to `SeatManager.expireOutdatedReservations()` (Module 3) and locks seats into `RESERVED` status for 5 minutes.
+5. **Reservation to Payment Processing (Module 4 $\rightarrow$ Module 5):** `MainFrame` transfers the pending `Booking` to `CheckoutPanel` (Module 5). `PaymentProcessor` executes the selected `PaymentMethod` strategy (`MockCardPayment`, `MockUpiPayment`, `MockWalletPayment`, or `LegacyBankGatewayAdapter`), creating a `PaymentTransaction` and invoking `BookingService.confirmBooking(...)` upon success.
+6. **Cancellation & Expiry (Module 4 $\rightarrow$ Module 3):** If a checkout window expires or a user cancels an eligible booking, `BookingService` delegates to `SeatManager.releaseSeats(...)`, ensuring seats are immediately freed back to `AVAILABLE`.
+7. **Administration & Analytics (Module 6):** `AdminPanel` communicates with `MovieService` (Module 1) for catalogue updates, `ShowService` (Module 2) for scheduling, and `BookingManager` (Module 6) for financial auditing and recursive revenue reporting.

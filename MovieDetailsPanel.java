@@ -4,10 +4,10 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.List;
 
-// Module 1: MovieDetailsPanel (Screen 2)
+// Module 2: MovieDetailsPanel (Showtimes Selection for Movie)
 public class MovieDetailsPanel extends JPanel {
     private final MainFrame parent;
-    private final BookingManager manager;
+    private final ShowService showService;
 
     private Movie currentMovie;
     private JLabel titleLabel;
@@ -15,9 +15,9 @@ public class MovieDetailsPanel extends JPanel {
     private JTextArea synopsisArea;
     private JPanel showsContainer;
 
-    public MovieDetailsPanel(MainFrame parent, BookingManager manager) {
+    public MovieDetailsPanel(MainFrame parent, ShowService showService) {
         this.parent = parent;
-        this.manager = manager;
+        this.showService = showService;
         setLayout(new BorderLayout());
         setBackground(UIConstants.COLOR_BG_LIGHT);
         setBorder(new EmptyBorder(20, 30, 20, 30));
@@ -105,7 +105,7 @@ public class MovieDetailsPanel extends JPanel {
         synopsisArea.setText("Synopsis:\n" + movie.getDescription());
 
         showsContainer.removeAll();
-        List<Show> movieShows = manager.getShowsForMovie(movie.getId());
+        List<Show> movieShows = showService.getShowsForMovie(movie.getId());
 
         if (movieShows.isEmpty()) {
             JLabel noShows = new JLabel("No scheduled showtimes available for this title.");

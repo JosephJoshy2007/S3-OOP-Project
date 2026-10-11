@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// Module 1: MovieService
+// Module 1: MovieService (Movie Management)
 public class MovieService implements Searchable<Movie> {
     private final BookingManager manager;
 
@@ -76,23 +76,5 @@ public class MovieService implements Searchable<Movie> {
             throw new ValidationException("Movie ID not found: " + movieId);
         }
         manager.logAudit("Safely removed movie ID: " + movieId);
-    }
-
-    public synchronized void addShow(Show show) throws ValidationException {
-        if (show == null) throw new ValidationException("Show cannot be null.");
-        if (show.getBasePrice() <= 0) throw new ValidationException("Base price must be greater than zero.");
-        manager.getShows().add(show);
-        manager.logAudit("Added show " + show.getId() + " for movie " + show.getMovie().getTitle());
-    }
-
-    public synchronized void removeShow(String showId) throws ValidationException {
-        for (Booking booking : manager.getBookings()) {
-            if (booking.getShow().getId().equals(showId)) {
-                throw new ValidationException("Cannot remove show: Booking records exist for Show ID " + showId);
-            }
-        }
-        boolean removed = manager.getShows().removeIf(s -> s.getId().equals(showId));
-        if (!removed) throw new ValidationException("Show ID not found: " + showId);
-        manager.logAudit("Safely removed show ID: " + showId);
     }
 }

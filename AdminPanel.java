@@ -5,11 +5,12 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.time.LocalDateTime;
 
-// Module 6: AdminPanel (Screen 7)
+// Module 6: AdminPanel (Screen 7 - Administration)
 public class AdminPanel extends JPanel {
     private final MainFrame parent;
     private final BookingManager manager;
     private final MovieService movieService;
+    private final ShowService showService;
 
     private DefaultTableModel moviesTableModel;
     private DefaultTableModel showsTableModel;
@@ -18,10 +19,11 @@ public class AdminPanel extends JPanel {
 
     private JLabel statsLabel;
 
-    public AdminPanel(MainFrame parent, BookingManager manager, MovieService movieService) {
+    public AdminPanel(MainFrame parent, BookingManager manager, MovieService movieService, ShowService showService) {
         this.parent = parent;
         this.manager = manager;
         this.movieService = movieService;
+        this.showService = showService;
 
         setLayout(new BorderLayout());
         setBackground(UIConstants.COLOR_BG_LIGHT);
@@ -183,7 +185,7 @@ public class AdminPanel extends JPanel {
             }
             String sId = (String) showsTableModel.getValueAt(row, 0);
             try {
-                movieService.removeShow(sId);
+                showService.removeShow(sId);
                 JOptionPane.showMessageDialog(this, "Show removed successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshData();
             } catch (ValidationException ex) {
@@ -225,7 +227,7 @@ public class AdminPanel extends JPanel {
 
                 String sId = "SHW-" + String.format("%02d", manager.getShows().size() + 1);
                 Show s = new Show(sId, m, sc, LocalDateTime.now().plusHours(hrs), pr);
-                movieService.addShow(s);
+                showService.addShow(s);
                 JOptionPane.showMessageDialog(this, "Show scheduled successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshData();
             } catch (Exception ex) {

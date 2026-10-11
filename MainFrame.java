@@ -5,10 +5,11 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// Module 5: MainFrame
+// Module 5: MainFrame (Application Navigation & Integration)
 public class MainFrame extends JFrame {
     private final BookingManager manager;
     private final MovieService movieService;
+    private final ShowService showService;
     private final SeatManager seatManager;
     private final BookingService bookingService;
     private final PaymentProcessor paymentProcessor;
@@ -30,6 +31,7 @@ public class MainFrame extends JFrame {
         super("CineBook - Movie Ticket Booking System");
         this.manager = BookingManager.getInstance();
         this.movieService = new MovieService(manager);
+        this.showService = new ShowService(manager);
         this.seatManager = new SeatManager();
         this.bookingService = new BookingService(manager, seatManager);
         this.paymentProcessor = new PaymentProcessor(manager, bookingService);
@@ -47,12 +49,12 @@ public class MainFrame extends JFrame {
         contentPanel = new JPanel(cardLayout);
 
         moviePanel = new MoviePanel(this, movieService);
-        movieDetailsPanel = new MovieDetailsPanel(this, manager);
+        movieDetailsPanel = new MovieDetailsPanel(this, showService);
         seatSelectionPanel = new SeatSelectionPanel(this, bookingService);
         checkoutPanel = new CheckoutPanel(this, paymentProcessor, bookingService);
         confirmationPanel = new BookingConfirmationPanel(this);
         historyPanel = new BookingHistoryPanel(this, manager, bookingService);
-        adminPanel = new AdminPanel(this, manager, movieService);
+        adminPanel = new AdminPanel(this, manager, movieService, showService);
 
         contentPanel.add(moviePanel, "MOVIES");
         contentPanel.add(movieDetailsPanel, "MOVIE_DETAILS");
