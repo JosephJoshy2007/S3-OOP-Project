@@ -3,7 +3,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-// Module 4: CheckoutPanel (Screen 4)
+// Module 4: CheckoutPanel (Screen 4 - Modern Checkout & Payment Simulator)
 public class CheckoutPanel extends JPanel {
     private final MainFrame parent;
     private final PaymentProcessor paymentProcessor;
@@ -11,6 +11,7 @@ public class CheckoutPanel extends JPanel {
 
     private Booking currentBooking;
 
+    private JLabel posterLabel;
     private JLabel bookingIdLabel;
     private JLabel movieDetailsLabel;
     private JLabel seatListLabel;
@@ -33,171 +34,224 @@ public class CheckoutPanel extends JPanel {
         this.paymentProcessor = paymentProcessor;
         this.bookingService = bookingService;
 
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(0, 16));
         setBackground(UIConstants.COLOR_BG_LIGHT);
-        setBorder(new EmptyBorder(16, 24, 16, 24));
+        setBorder(new EmptyBorder(20, 28, 20, 28));
 
         initializeUI();
     }
 
     private void initializeUI() {
-        JPanel topBar = new JPanel(new BorderLayout());
+        // Modern Top Bar with Countdown Timer Pill
+        JPanel topBar = new JPanel(new BorderLayout(16, 0));
         topBar.setBackground(Color.WHITE);
         topBar.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(UIConstants.COLOR_BORDER, 1, true),
-                new EmptyBorder(12, 16, 12, 16)
+                new EmptyBorder(12, 18, 12, 18)
         ));
 
-        JButton cancelBtn = new JButton("<< Cancel & Release Seats");
-        cancelBtn.setFont(UIConstants.FONT_SMALL);
-        cancelBtn.setBackground(new Color(254, 237, 237));
-        cancelBtn.setForeground(new Color(180, 40, 40));
+        JButton cancelBtn = new JButton("← Cancel & Release Seats");
+        cancelBtn.setFont(UIConstants.FONT_BOLD);
+        cancelBtn.setBackground(new Color(254, 242, 242));
+        cancelBtn.setForeground(new Color(220, 38, 38));
         cancelBtn.setFocusPainted(false);
+        cancelBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cancelBtn.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(new Color(254, 202, 202), 1, true),
+                new EmptyBorder(6, 14, 6, 14)
+        ));
         cancelBtn.addActionListener(e -> cancelAndAbandon());
 
-        JLabel headerTitle = new JLabel("Checkout & Simulated Payment");
+        JLabel headerTitle = new JLabel("Checkout & Simulated Payment Gateway");
         headerTitle.setFont(UIConstants.FONT_HEADING);
         headerTitle.setForeground(UIConstants.COLOR_TEXT_DARK);
 
-        timerLabel = new JLabel("Time Remaining: 05:00");
+        timerLabel = new JLabel("Hold Window: 05:00");
         timerLabel.setFont(UIConstants.FONT_BOLD);
-        timerLabel.setForeground(new Color(200, 35, 51));
+        timerLabel.setForeground(new Color(220, 38, 38));
+        timerLabel.setBackground(new Color(254, 242, 242));
+        timerLabel.setOpaque(true);
+        timerLabel.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(new Color(254, 202, 202), 1, true),
+                new EmptyBorder(4, 12, 4, 12)
+        ));
 
         topBar.add(cancelBtn, BorderLayout.WEST);
         topBar.add(headerTitle, BorderLayout.CENTER);
         topBar.add(timerLabel, BorderLayout.EAST);
         add(topBar, BorderLayout.NORTH);
 
+        // Center 2-Column Split Layout
         JPanel centerGrid = new JPanel(new GridLayout(1, 2, 20, 0));
-        centerGrid.setBackground(UIConstants.COLOR_BG_LIGHT);
-        centerGrid.setBorder(new EmptyBorder(16, 0, 16, 0));
+        centerGrid.setOpaque(false);
 
-        // Left Card: Booking Order Summary
-        JPanel summaryCard = new JPanel();
-        summaryCard.setLayout(new BoxLayout(summaryCard, BoxLayout.Y_AXIS));
+        // Left Card: Order Summary with Poster
+        JPanel summaryCard = new JPanel(new BorderLayout(16, 16));
         summaryCard.setBackground(Color.WHITE);
         summaryCard.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(UIConstants.COLOR_BORDER, 1, true),
-                new EmptyBorder(18, 18, 18, 18)
+                new EmptyBorder(20, 20, 20, 20)
         ));
 
         JLabel summaryTitle = new JLabel("Booking Order Summary");
         summaryTitle.setFont(UIConstants.FONT_TITLE);
-        summaryTitle.setForeground(UIConstants.COLOR_PRIMARY_DARK);
+        summaryTitle.setForeground(UIConstants.COLOR_PRIMARY);
+        summaryCard.add(summaryTitle, BorderLayout.NORTH);
 
-        bookingIdLabel = new JLabel("Booking Reference: -");
+        JPanel summaryBody = new JPanel(new BorderLayout(16, 0));
+        summaryBody.setOpaque(false);
+
+        posterLabel = new JLabel();
+        posterLabel.setPreferredSize(new Dimension(110, 160));
+        posterLabel.setBorder(BorderFactory.createLineBorder(new Color(226, 232, 240), 1, true));
+        summaryBody.add(posterLabel, BorderLayout.WEST);
+
+        JPanel summaryDetails = new JPanel();
+        summaryDetails.setLayout(new BoxLayout(summaryDetails, BoxLayout.Y_AXIS));
+        summaryDetails.setOpaque(false);
+
+        bookingIdLabel = new JLabel("Reference: -");
         bookingIdLabel.setFont(UIConstants.FONT_BOLD);
+        bookingIdLabel.setForeground(UIConstants.COLOR_ACCENT);
 
-        movieDetailsLabel = new JLabel("Movie: -");
+        movieDetailsLabel = new JLabel("Show: -");
         movieDetailsLabel.setFont(UIConstants.FONT_REGULAR);
+        movieDetailsLabel.setForeground(UIConstants.COLOR_TEXT_DARK);
 
         seatListLabel = new JLabel("Seats: -");
         seatListLabel.setFont(UIConstants.FONT_REGULAR);
+        seatListLabel.setForeground(UIConstants.COLOR_TEXT_MUTED);
 
         amountPayableLabel = new JLabel("Total Payable: $0.00");
-        amountPayableLabel.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        amountPayableLabel.setForeground(new Color(25, 135, 84));
+        amountPayableLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        amountPayableLabel.setForeground(UIConstants.COLOR_SUCCESS);
 
-        summaryCard.add(summaryTitle);
-        summaryCard.add(Box.createVerticalStrut(12));
-        summaryCard.add(bookingIdLabel);
-        summaryCard.add(Box.createVerticalStrut(8));
-        summaryCard.add(movieDetailsLabel);
-        summaryCard.add(Box.createVerticalStrut(8));
-        summaryCard.add(seatListLabel);
-        summaryCard.add(Box.createVerticalStrut(16));
-        summaryCard.add(new JSeparator());
-        summaryCard.add(Box.createVerticalStrut(16));
-        summaryCard.add(amountPayableLabel);
+        summaryDetails.add(bookingIdLabel);
+        summaryDetails.add(Box.createVerticalStrut(8));
+        summaryDetails.add(movieDetailsLabel);
+        summaryDetails.add(Box.createVerticalStrut(8));
+        summaryDetails.add(seatListLabel);
+        summaryDetails.add(Box.createVerticalStrut(14));
+        summaryDetails.add(new JSeparator());
+        summaryDetails.add(Box.createVerticalStrut(14));
+        summaryDetails.add(amountPayableLabel);
 
-        // Right Card: Payment Configuration
+        summaryBody.add(summaryDetails, BorderLayout.CENTER);
+        summaryCard.add(summaryBody, BorderLayout.CENTER);
+
+        // Right Card: Modern Payment Selection Form
         JPanel payCard = new JPanel();
         payCard.setLayout(new BoxLayout(payCard, BoxLayout.Y_AXIS));
         payCard.setBackground(Color.WHITE);
         payCard.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(UIConstants.COLOR_BORDER, 1, true),
-                new EmptyBorder(18, 18, 18, 18)
+                new EmptyBorder(20, 20, 20, 20)
         ));
 
-        JLabel payTitle = new JLabel("Payment Options (Simulated Gateway)");
+        JLabel payTitle = new JLabel("Payment Method & Verification");
         payTitle.setFont(UIConstants.FONT_TITLE);
-        payTitle.setForeground(UIConstants.COLOR_PRIMARY_DARK);
+        payTitle.setForeground(UIConstants.COLOR_PRIMARY);
+        payTitle.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        paymentMethodCombo = new JComboBox<>(new String[]{
-                "Mock Credit/Debit Card",
-                "Mock UPI Instant Pay",
-                "Mock Digital Wallet",
+        JLabel methodLbl = new JLabel("Select Payment Channel (Strategy Pattern):");
+        methodLbl.setFont(UIConstants.FONT_BOLD);
+        methodLbl.setForeground(UIConstants.COLOR_TEXT_DARK);
+        methodLbl.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        String[] methods = {
+                "Credit / Debit Card (MockCardPayment)",
+                "UPI Instant Pay (MockUpiPayment)",
+                "Digital Wallet (MockWalletPayment)",
                 "Legacy Bank DirectDebit (Adapter Pattern)"
-        });
+        };
+        paymentMethodCombo = new JComboBox<>(methods);
         paymentMethodCombo.setFont(UIConstants.FONT_REGULAR);
-        paymentMethodCombo.addActionListener(e -> updatePaymentFormFields());
+        paymentMethodCombo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 34));
+        paymentMethodCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
+        paymentMethodCombo.addActionListener(e -> updatePaymentFields());
 
-        simulationModeCombo = new JComboBox<>(new String[]{
-                "SUCCESS (Approved)",
-                "FORCE_FAIL (Bank Decline Simulation)",
-                "USER_CANCEL (Simulated Abort)"
-        });
+        dynamicPaymentFieldsPanel = new JPanel();
+        dynamicPaymentFieldsPanel.setLayout(new GridLayout(2, 2, 8, 8));
+        dynamicPaymentFieldsPanel.setOpaque(false);
+        dynamicPaymentFieldsPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 80));
+        dynamicPaymentFieldsPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JLabel simLbl = new JLabel("Simulation Mode (Demonstration Test Cases):");
+        simLbl.setFont(UIConstants.FONT_BOLD);
+        simLbl.setForeground(UIConstants.COLOR_TEXT_DARK);
+        simLbl.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        String[] simModes = {
+                "SUCCESS - Authorized & Completed",
+                "FORCE_FAIL - Simulate Bank Declined",
+                "USER_CANCEL - Abandon & Release Seats"
+        };
+        simulationModeCombo = new JComboBox<>(simModes);
         simulationModeCombo.setFont(UIConstants.FONT_REGULAR);
+        simulationModeCombo.setMaximumSize(new Dimension(Integer.MAX_VALUE, 34));
+        simulationModeCombo.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        dynamicPaymentFieldsPanel = new JPanel(new GridLayout(0, 2, 8, 8));
-        dynamicPaymentFieldsPanel.setBackground(Color.WHITE);
-        dynamicPaymentFieldsPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
-
-        cardNumField = new JTextField("4111 2222 3333 4444");
-        cardHolderField = new JTextField("Aarav Sharma");
-        upiField = new JTextField("aarav@okhdfcbank");
-        walletBalanceField = new JTextField("150.00");
-
-        updatePaymentFormFields();
-
-        JButton payButton = new JButton("Pay & Confirm Booking");
+        JButton payButton = new JButton("Complete Payment  →");
         payButton.setFont(UIConstants.FONT_BOLD);
-        payButton.setBackground(new Color(25, 135, 84));
+        payButton.setBackground(UIConstants.COLOR_SUCCESS);
         payButton.setForeground(Color.WHITE);
         payButton.setFocusPainted(false);
         payButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        payButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, 44));
         payButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        payButton.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(new Color(5, 150, 105), 1, true),
+                new EmptyBorder(10, 16, 10, 16)
+        ));
         payButton.addActionListener(e -> executePayment());
 
         payCard.add(payTitle);
-        payCard.add(Box.createVerticalStrut(12));
-        payCard.add(new JLabel("Select Payment Channel:"));
-        payCard.add(Box.createVerticalStrut(4));
+        payCard.add(Box.createVerticalStrut(14));
+        payCard.add(methodLbl);
+        payCard.add(Box.createVerticalStrut(6));
         payCard.add(paymentMethodCombo);
-        payCard.add(Box.createVerticalStrut(10));
-        payCard.add(new JLabel("Simulation Outcome Mode (Viva Defense):"));
-        payCard.add(Box.createVerticalStrut(4));
-        payCard.add(simulationModeCombo);
-        payCard.add(Box.createVerticalStrut(10));
+        payCard.add(Box.createVerticalStrut(14));
         payCard.add(dynamicPaymentFieldsPanel);
-        payCard.add(Box.createVerticalStrut(15));
+        payCard.add(Box.createVerticalStrut(14));
+        payCard.add(simLbl);
+        payCard.add(Box.createVerticalStrut(6));
+        payCard.add(simulationModeCombo);
+        payCard.add(Box.createVerticalStrut(20));
         payCard.add(payButton);
 
         centerGrid.add(summaryCard);
         centerGrid.add(payCard);
-
         add(centerGrid, BorderLayout.CENTER);
+
+        updatePaymentFields();
     }
 
-    private void updatePaymentFormFields() {
+    private void updatePaymentFields() {
         dynamicPaymentFieldsPanel.removeAll();
-        int selectedIdx = paymentMethodCombo.getSelectedIndex();
+        int idx = paymentMethodCombo.getSelectedIndex();
 
-        if (selectedIdx == 0) { // Card
+        if (idx == 0) { // Card
             dynamicPaymentFieldsPanel.add(new JLabel("Card Number:"));
+            cardNumField = new JTextField("4532 8812 9012 3456");
             dynamicPaymentFieldsPanel.add(cardNumField);
-            dynamicPaymentFieldsPanel.add(new JLabel("Name on Card:"));
+
+            dynamicPaymentFieldsPanel.add(new JLabel("Cardholder Name:"));
+            cardHolderField = new JTextField("Aarav Sharma");
             dynamicPaymentFieldsPanel.add(cardHolderField);
-        } else if (selectedIdx == 1) { // UPI
-            dynamicPaymentFieldsPanel.add(new JLabel("Virtual UPI ID:"));
+        } else if (idx == 1) { // UPI
+            dynamicPaymentFieldsPanel.add(new JLabel("Virtual Payment Address (VPA):"));
+            upiField = new JTextField("user@okaxis");
             dynamicPaymentFieldsPanel.add(upiField);
-        } else if (selectedIdx == 2) { // Wallet
-            dynamicPaymentFieldsPanel.add(new JLabel("Wallet Balance:"));
+            dynamicPaymentFieldsPanel.add(new JLabel(""));
+            dynamicPaymentFieldsPanel.add(new JLabel(""));
+        } else if (idx == 2) { // Wallet
+            dynamicPaymentFieldsPanel.add(new JLabel("Simulated Balance ($):"));
+            walletBalanceField = new JTextField("150.00");
             dynamicPaymentFieldsPanel.add(walletBalanceField);
+            dynamicPaymentFieldsPanel.add(new JLabel(""));
+            dynamicPaymentFieldsPanel.add(new JLabel(""));
         } else { // Adapter
-            JLabel adapterNote = new JLabel("Adapter converts call to LegacyBankGatewayApi");
-            adapterNote.setFont(UIConstants.FONT_SMALL);
-            adapterNote.setForeground(Color.GRAY);
+            JLabel adapterNote = new JLabel("<html><font color='#4F46E5'>Adapts LegacyBankGatewayApi via LegacyBankGatewayAdapter</font></html>");
             dynamicPaymentFieldsPanel.add(adapterNote);
             dynamicPaymentFieldsPanel.add(new JLabel(""));
         }
@@ -210,9 +264,11 @@ public class CheckoutPanel extends JPanel {
         this.currentBooking = booking;
         this.remainingSeconds = 300;
 
-        bookingIdLabel.setText("Booking ID: " + booking.getId());
-        movieDetailsLabel.setText("Show: " + booking.getShow().getMovie().getTitle() +
-                " (" + booking.getShow().getShowDateTime().format(UIConstants.DATE_TIME_FORMATTER) + ")");
+        Movie movie = booking.getShow().getMovie();
+        posterLabel.setIcon(UIConstants.getMoviePoster(movie.getId(), 110, 160));
+
+        bookingIdLabel.setText("Reference: " + booking.getId());
+        movieDetailsLabel.setText("Show: " + movie.getTitle() + " (" + booking.getShow().getScreen().getName() + ")");
         seatListLabel.setText("Reserved Seats: " + String.join(", ", booking.getSeatIds()));
         amountPayableLabel.setText(String.format("Total Payable: $%.2f", booking.getTotalAmount()));
 
@@ -221,7 +277,7 @@ public class CheckoutPanel extends JPanel {
             remainingSeconds--;
             int mins = remainingSeconds / 60;
             int secs = remainingSeconds % 60;
-            timerLabel.setText(String.format("Time Remaining: %02d:%02d", mins, secs));
+            timerLabel.setText(String.format("Hold Window: %02d:%02d", mins, secs));
 
             if (remainingSeconds <= 0) {
                 countdownTimer.stop();

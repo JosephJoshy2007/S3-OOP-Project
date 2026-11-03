@@ -1,0 +1,60 @@
+=== PAGE 11 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+ABSTRACT
+The Student Feedback Management System is a Java-based software application
+BOT lines:
+feedback management, promotes transparency, and helps educational
+institutions evaluate and improve the quality of teaching and learning.
+Departmentof CSE, CE Kidangoor 1
+
+=== PAGE 12 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+Chapter 1
+INTRODUCTION
+BOT lines:
+programming, GUI development, database management, and software design concepts
+in developing a real-world application.
+Departmentof CSE, CE Kidangoor 2
+
+=== PAGE 13 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+CHAPTER 2
+AIM AND OBJECTIVES
+BOT lines:
+• To ensure data security, accuracy, modularity, and maintainability through proper validation
+and database management.
+Departmentof CSE, CE Kidangoor 3
+
+=== PAGE 14 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+CHAPTER 3
+REQUIREMENT SPECIFICATION
+BOT lines:
+• Monitor: 1024 × 768 resolution or higher
+• Input Devices: Keyboard and Mouse
+Departmentof CSE, CE Kidangoor 4
+
+=== PAGE 15 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+CHAPTER 4
+DATABASEDESIGN
+BOT lines:
+Course assignments are stored separately in the COURSES table and linked to faculty
+through faculty_id.
+Departmentof CSE, CE Kidangoor 5
+
+=== PAGE 16 in PDF ===
+TOP lines:
+PBCST 304 Object OrientedProgramming Student Feedback ManagementSystem
+4.3 ADMIN TABLE
+Column Data type Constraint Purpose
+BOT lines:
+verification. Registration requests remain PENDING until an administrator verifies and
+approves them.
+Departmentof CSE, CE Kidangoor 6
+

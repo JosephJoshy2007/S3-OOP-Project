@@ -1,7 +1,8 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-// Module 1: MovieService (Movie Management)
+// Module 1: MovieService (Movie Management with JDBC Persistence)
 public class MovieService implements Searchable<Movie> {
     private final BookingManager manager;
 
@@ -34,8 +35,14 @@ public class MovieService implements Searchable<Movie> {
         if (movie.getDurationMinutes() <= 0) {
             throw new ValidationException("Duration must be a positive integer.");
         }
-        manager.getMovies().add(movie);
-        manager.logAudit("Added movie: " + movie.getTitle() + " (" + movie.getId() + ")");
+
+        try {
+            manager.getDbManager().insertMovie(movie);
+            manager.getMovies().add(movie);
+            manager.logAudit("Added movie: " + movie.getTitle() + " (" + movie.getId() + ")");
+        } catch (SQLException e) {
+            throw new ValidationException("Database error while adding movie: " + e.getMessage());
+        }
     }
 
     public synchronized void updateMovie(String id, String title, String genre,
@@ -58,7 +65,13 @@ public class MovieService implements Searchable<Movie> {
         movie.setLanguage(language.trim());
         movie.setCertification(cert.trim());
         movie.setDescription(desc.trim());
-        manager.logAudit("Updated movie: " + movie.getTitle() + " (" + id + ")");
+
+        try {
+            manager.getDbManager().updateMovie(movie);
+            manager.logAudit("Updated movie: " + movie.getTitle() + " (" + id + ")");
+        } catch (SQLException e) {
+            throw new ValidationException("Database error while updating movie: " + e.getMessage());
+        }
     }
 
     public synchronized void removeMovie(String movieId) throws ValidationException {
@@ -70,11 +83,16 @@ public class MovieService implements Searchable<Movie> {
             }
         }
 
-        manager.getShows().removeIf(s -> s.getMovie().getId().equals(movieId));
-        boolean removed = manager.getMovies().removeIf(m -> m.getId().equals(movieId));
-        if (!removed) {
-            throw new ValidationException("Movie ID not found: " + movieId);
+        try {
+            manager.getDbManager().deleteMovie(movieId);
+            manager.getShows().removeIf(s -> s.getMovie().getId().equals(movieId));
+            boolean removed = manager.getMovies().removeIf(m -> m.getId().equals(movieId));
+            if (!removed) {
+                throw new ValidationException("Movie ID not found: " + movieId);
+            }
+            manager.logAudit("Safely removed movie ID: " + movieId);
+        } catch (SQLException e) {
+            throw new ValidationException("Database error while removing movie: " + e.getMessage());
         }
-        manager.logAudit("Safely removed movie ID: " + movieId);
     }
 }

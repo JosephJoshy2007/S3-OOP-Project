@@ -13,7 +13,8 @@ KTU Syllabus Module 1: Java Basics & Flow Control       ---> 100% Covered
 KTU Syllabus Module 2: Core OOP, Inheritance & Polymorphism ---> 100% Covered
 KTU Syllabus Module 3: Interfaces, Exceptions & Patterns    ---> 100% Covered
 KTU Syllabus Module 4: Swing GUI & Event-Driven Architecture ---> 100% Covered
-PBL Project Requirements: In-Memory Domain Processing        ---> 100% Covered
+KTU Syllabus Module 5: Database Applications using JDBC     ---> 100% Covered
+PBL Project Requirements: In-Memory & SQLite Persistence     ---> 100% Covered
 ```
 
 ---
@@ -98,6 +99,21 @@ PBL Project Requirements: In-Memory Domain Processing        ---> 100% Covered
 
 ---
 
+# MODULE 5: Developing Database Applications using JDBC
+
+| Syllabus Topic | Specific CineBook Implementation & Code Location | Practical Demonstration & Viva Explanation |
+|---|---|---|
+| **JDBC Overview & Driver Architecture** | `DatabaseManager.java` (Line 1 to 700)<br>SQLite Type 4 Pure Java Native JDBC Driver (`lib/sqlite-jdbc-3.47.2.0.jar`) | Direct database connectivity using JDBC API (`java.sql.*`). Connects to local `./db/cinebook.db`. |
+| **6 Fundamental Steps of JDBC** | 1. Load Driver: `Class.forName("org.sqlite.JDBC")`<br>2. Establish Connection: `DriverManager.getConnection(DB_URL)`<br>3. Create Statement: `conn.prepareStatement(sql)`<br>4. Execute Query/DML: `pstmt.executeQuery()` / `executeUpdate()`<br>5. Process ResultSet: `while(rs.next())`<br>6. Close Resources: Java try-with-resources | Step-by-step implementation across all CRUD functions in `DatabaseManager.java`. |
+| **Connection Establishment** | `getConnection()` in `DatabaseManager.java` returning `java.sql.Connection` | Manages relational connection to `jdbc:sqlite:db/cinebook.db` with PRAGMA foreign keys enabled. |
+| **Creating & Executing SQL Queries** | DDL: `CREATE TABLE IF NOT EXISTS` for `users`, `movies`, `screens`, `shows`, `bookings`, `transactions`, `audit_logs`<br>DML: `SELECT`, `INSERT`, `UPDATE`, `DELETE` | Executes standard SQL statements for relational persistence. |
+| **Working with ResultSet** | `ResultSet rs = pstmt.executeQuery()` in `authenticate()`, `loadAllMovies()`, etc. | Navigates through cursor rows using `rs.next()`, extracting column attributes via `getString()`, `getInt()`, and `getDouble()`. |
+| **Parameterized Queries (`PreparedStatement`)** | `PreparedStatement pstmt = conn.prepareStatement(sql)` with placeholder binding (`pstmt.setString(1, ...);`) | Prevents SQL injection attacks and improves execution efficiency for dynamic queries. |
+| **Performing CRUD Operations with JDBC** | - **Create (INSERT):** `insertMovie()`, `insertShow()`, `insertBooking()`, `insertTransaction()`<br>- **Read (SELECT):** `authenticate()`, `loadAllMovies()`, `loadAllShows()`<br>- **Update (UPDATE):** `updateMovie()`, `updateBookingStatus()`, `updateCustomerLoyalty()`<br>- **Delete (DELETE):** `deleteMovie()`, `deleteShow()` | Complete relational lifecycle management matching business entity updates. |
+| **Authentication Flow & Session Control** | `LoginDialog.java` and `MainFrame.handleLogout()` | Queries SQLite `users` table to authenticate `admin` and `user` (password `123`), requiring manual login on each program startup. |
+
+---
+
 # 6-Member Team Viva Cheat Sheet
 
 When the examiner asks each member to explain their contribution, use this quick reference:
@@ -142,10 +158,12 @@ When the examiner asks each member to explain their contribution, use this quick
   - Dynamic Method Dispatch: Calling `paymentMethod.executeTransaction()` at runtime without switch statements.
   - `javax.swing.Timer` for the 5-minute checkout hold countdown.
 
-### Member 6: Main UI, Administration & Architecture
-- **Files Owned:** `CineBookApp.java`, `MainFrame.java`, `UIConstants.java`, `BookingManager.java`, `AdminPanel.java`, `User.java`, `Customer.java`, `AdminUser.java`, `Searchable.java`, `CineBookExceptions.java`
+### Member 6: Main UI, Administration, Database & Architecture
+- **Files Owned:** `CineBookApp.java`, `MainFrame.java`, `LoginDialog.java`, `DatabaseManager.java`, `UIConstants.java`, `BookingManager.java`, `AdminPanel.java`, `User.java`, `Customer.java`, `AdminUser.java`, `Searchable.java`, `CineBookExceptions.java`
 - **Key Concepts to Defend:**
-  - Singleton Design Pattern with Double-Checked Locking in `BookingManager.getInstance()`.
+  - Singleton Design Pattern with Double-Checked Locking in `BookingManager.getInstance()` and `DatabaseManager.getInstance()`.
+  - JDBC Architecture & 6 Steps: Connection establishment, `PreparedStatement`, `ResultSet`, and relational CRUD operations.
+  - Interactive Modal Authentication: `LoginDialog` authenticating against SQLite credentials with no pre-authenticated sessions.
   - Inheritance and Polymorphic greetings: `abstract class User` extended by `Customer` and `AdminUser`.
   - Algorithmic Recursion: `countTotalBookedSeatsRecursive(List<Booking>, int index)`.
   - Custom Checked Exception Hierarchy: `CineBookException` base class.

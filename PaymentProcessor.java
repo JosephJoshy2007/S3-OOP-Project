@@ -1,7 +1,8 @@
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-// Module 4: PaymentProcessor
+// Module 4: PaymentProcessor with SQLite JDBC Ledger
 public class PaymentProcessor {
     private final BookingManager manager;
     private final BookingService bookingService;
@@ -40,6 +41,9 @@ public class PaymentProcessor {
                     PaymentStatus.CANCELLED, "USER-ABORT"
             );
             manager.getTransactions().add(txn);
+            try {
+                manager.getDbManager().insertTransaction(txn);
+            } catch (SQLException ignored) {}
             manager.logAudit("Payment cancelled by user for booking " + booking.getId());
             return txn;
         }
@@ -53,6 +57,9 @@ public class PaymentProcessor {
                     PaymentStatus.FAILED, "ERR-DECLINED"
             );
             manager.getTransactions().add(txn);
+            try {
+                manager.getDbManager().insertTransaction(txn);
+            } catch (SQLException ignored) {}
             manager.logAudit("Payment forcefully failed for booking " + booking.getId());
             throw new PaymentProcessingException("Simulated payment was declined by the issuer.");
         }
@@ -72,6 +79,12 @@ public class PaymentProcessor {
                 PaymentStatus.SUCCESS, "AUTH-" + UUID.randomUUID().toString().substring(0, 6).toUpperCase()
         );
         manager.getTransactions().add(successTxn);
+        try {
+            manager.getDbManager().insertTransaction(successTxn);
+        } catch (SQLException e) {
+            System.err.println("[JDBC WARNING] Failed to persist transaction: " + e.getMessage());
+        }
+
         manager.logAudit("Payment successful (" + successTxn.getId() + ") for booking " + booking.getId());
         return successTxn;
     }

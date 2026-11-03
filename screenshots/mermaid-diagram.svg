@@ -1,0 +1,533 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2835.6339999999996 3106.4" width="2835.6339999999996" height="3106.4" style="--bg:#18181B;--fg:#F4F4F5;--line:#71717A;--muted:#A1A1AA;--surface:#27272A;--border:#3F3F46;background:var(--bg)">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  .mono { font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', ui-monospace, monospace; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          var(--fg);
+    --_text-sec:      var(--muted, color-mix(in srgb, var(--fg) 60%, var(--bg)));
+    --_text-muted:    var(--muted, color-mix(in srgb, var(--fg) 40%, var(--bg)));
+    --_text-faint:    color-mix(in srgb, var(--fg) 25%, var(--bg));
+    --_line:          var(--line, color-mix(in srgb, var(--fg) 50%, var(--bg)));
+    --_arrow:         var(--accent, color-mix(in srgb, var(--fg) 85%, var(--bg)));
+    --_node-fill:     var(--surface, color-mix(in srgb, var(--fg) 3%, var(--bg)));
+    --_node-stroke:   var(--border, color-mix(in srgb, var(--fg) 20%, var(--bg)));
+    --_group-fill:    var(--bg);
+    --_group-hdr:     color-mix(in srgb, var(--fg) 5%, var(--bg));
+    --_inner-stroke:  color-mix(in srgb, var(--fg) 12%, var(--bg));
+    --_key-badge:     color-mix(in srgb, var(--fg) 10%, var(--bg));
+  }
+</style>
+<defs>
+  <marker id="cls-inherit" markerWidth="12" markerHeight="10" refX="12" refY="5" orient="auto-start-reverse">
+    <polygon points="0 0, 12 5, 0 10" fill="var(--bg)" stroke="var(--_arrow)" stroke-width="1.5" />
+  </marker>
+  <marker id="cls-composition" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto-start-reverse">
+    <polygon points="6 0, 12 5, 6 10, 0 5" fill="var(--_arrow)" stroke="var(--_arrow)" stroke-width="1" />
+  </marker>
+  <marker id="cls-aggregation" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto-start-reverse">
+    <polygon points="6 0, 12 5, 6 10, 0 5" fill="var(--bg)" stroke="var(--_arrow)" stroke-width="1.5" />
+  </marker>
+  <marker id="cls-arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto-start-reverse">
+    <polyline points="0 0, 8 3, 0 6" fill="none" stroke="var(--_arrow)" stroke-width="1.5" />
+  </marker>
+</defs>
+<polyline class="class-relationship" data-from="User" data-to="CustomerUser" data-type="inheritance" data-marker-at="from" data-label="Inheritance" points="630.8619047619044,1945.5 630.8619047619045,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="User" data-to="AdminUser" data-type="inheritance" data-marker-at="from" data-label="Inheritance" points="530.9285714285711,1945.5 530.9285714285711,1955.5 352.02857142857147,1955.5 352.02857142857124,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="Show" data-to="Movie" data-type="composition" data-marker-at="from" data-label="Composition" points="2468.267333333333,2353.7999999999997 2468.267333333333,2363.7999999999997 2629.167333333333,2363.7999999999997 2629.167333333333,2494.1" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="Show" data-to="Auditorium" data-type="composition" data-marker-at="from" data-label="Composition" points="2408.167333333333,2353.7999999999997 2408.1673333333333,2494.1" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="Show" data-to="Seat" data-type="composition" data-marker-at="from" data-label="1..* Aggregates" points="2348.067333333333,2353.7999999999997 2348.067333333333,2363.7999999999997 2200.834,2363.7999999999997 2200.834,2514.1" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="Seat" data-to="SeatTier" data-type="association" data-marker-at="to" data-label="Classified By" points="2200.834,2762.1 2200.834,2922.3999999999996" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Seat" data-to="SeatStatus" data-type="association" data-marker-at="to" data-label="State" points="2127.3006666666665,2762.1 2127.300666666666,2792.1 1993.8339999999996,2792.1 1993.8339999999996,2922.3999999999996" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Booking" data-to="Show" data-type="association" data-marker-at="to" data-label="References" points="1494.8428571428567,1945.5 1494.8428571428567,1955.5 2368.1006666666663,1955.5 2368.1006666666663,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Booking" data-to="CustomerUser" data-type="association" data-marker-at="to" data-label="Booked By" points="1332.5571428571425,1945.5 1332.5571428571425,1955.5 726.3952380952378,1955.5 726.3952380952378,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Booking" data-to="Seat" data-type="aggregation" data-marker-at="from" data-label="Reserves" points="1462.385714285714,1945.5 1462.385714285714,1965.5 2107.4979999999996,1965.5 2107.4979999999996,2444.1 2127.300666666666,2444.1 2127.3006666666665,2514.1" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-aggregation)" />
+<polyline class="class-relationship" data-from="Booking" data-to="BookingStatus" data-type="association" data-marker-at="to" data-label="Has State" points="1429.928571428571,1945.5 1429.928571428571,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Booking" data-to="PaymentTransaction" data-type="association" data-marker-at="to" data-label="Paid via" data-from-cardinality="1" data-to-cardinality="1" points="1397.4714285714283,1945.5 1397.4714285714283,1975.5 1229.5285714285712,1975.5 1229.5285714285712,2115.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="PaymentTransaction" data-to="PaymentStatus" data-type="association" data-marker-at="to" data-label="State" points="1229.5285714285712,2323.7999999999997 1229.5285714285712,2494.1" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="Booking" data-to="Cancellable" data-type="realization" data-marker-at="to" data-label="Implements" points="1365.0142857142855,1945.5 1365.0142857142855,1965.5 975.528571428571,1965.5 975.5285714285711,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="PaymentStrategy" data-to="CreditCardPayment" data-type="realization" data-marker-at="from" data-label="Implements" points="526.2,144 526.2,284.3" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="PaymentStrategy" data-to="UPIPayment" data-type="realization" data-marker-at="from" data-label="Implements" points="749.64,144 749.64,154 1763.3999999999996,154 1763.3999999999999,284.3" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="PaymentStrategy" data-to="NetBankingPayment" data-type="realization" data-marker-at="from" data-label="Implements" points="675.16,144 675.16,164 1351,164 1351,284.3" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="PaymentStrategy" data-to="LegacyGatewayAdapter" data-type="realization" data-marker-at="from" data-label="Implements" points="600.6800000000001,144 600.68,174 938.6,174 938.5999999999999,304.3" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="LegacyGatewayAdapter" data-to="ThirdPartyPaymentGateway" data-type="association" data-marker-at="to" data-label="Adapts" points="938.5999999999999,412.3 938.6,572.6" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="ThirdPartyPaymentGateway" data-to="MockCardPayment" data-type="realization" data-marker-at="from" data-label="Implements" points="938.6,656.6 938.6,796.9" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-start="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="MovieService" data-to="Searchable~Movie~" data-type="realization" data-marker-at="to" data-label="Implements" points="2642.4339999999997,1835.5 2642.4339999999997,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" stroke-dasharray="6 4" marker-end="url(#cls-inherit)" />
+<polyline class="class-relationship" data-from="BookingManager" data-to="DatabaseManager" data-type="association" data-marker-at="to" data-label="Uses" points="2165.8999999999996,1477.2 2165.8999999999996,1617.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="BookingManager" data-to="MovieService" data-type="association" data-marker-at="to" data-label="Coordinates" points="2331.833333333333,1477.2 2331.833333333333,1487.1999999999998 2642.4339999999997,1487.1999999999998 2642.4339999999997,1727.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="BookingManager" data-to="PricingEngine" data-type="association" data-marker-at="to" data-label="Evaluates Price" points="2082.9333333333334,1477.2 2082.933333333333,1497.1999999999998 1756.7999999999997,1497.1999999999998 1756.7999999999997,1617.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="BookingManager" data-to="Booking" data-type="aggregation" data-marker-at="from" data-label="Manages" points="1999.9666666666665,1477.2 1999.9666666666665,1487.1999999999998 1413.6999999999998,1487.1999999999998 1413.6999999999996,1617.5" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-aggregation)" />
+<polyline class="class-relationship" data-from="BookingManager" data-to="Show" data-type="aggregation" data-marker-at="from" data-label="Schedules" points="2248.8666666666663,1477.2 2248.8666666666663,1497.1999999999998 2448.234,1497.1999999999998 2448.234,2085.7999999999997" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-aggregation)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="BookingManager" data-type="association" data-marker-at="to" data-label="Controller" points="1360.8333333333333,1072.9 1360.8333333333333,1082.9 2165.8999999999996,1082.9 2165.8999999999996,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-end="url(#cls-arrow)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="MoviePanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1223.6111111111109,1072.9 1223.6111111111109,1102.9 691.3,1102.9 691.3,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="MovieDetailsPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1251.0555555555554,1072.9 1251.0555555555554,1112.9 1001.3999999999999,1112.9 1001.3999999999999,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="SeatSelectionPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1333.3888888888887,1072.9 1333.3888888888887,1092.9 1779.8999999999996,1092.9 1779.8999999999996,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="CheckoutPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1168.722222222222,1072.9 1168.722222222222,1082.9 156.9000000000001,1082.9 156.89999999999998,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="BookingConfirmationPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1196.1666666666665,1072.9 1196.1666666666665,1092.9 410.9000000000001,1092.9 410.9000000000002,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="BookingHistoryPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1305.9444444444443,1072.9 1305.9444444444443,1102.9 1535.7999999999997,1102.9 1535.7999999999997,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<polyline class="class-relationship" data-from="CineBookApp" data-to="AdminPanel" data-type="composition" data-marker-at="from" data-label="Card View" points="1278.4999999999998,1072.9 1278.4999999999998,1213.2" fill="none" stroke="var(--_line)" stroke-width="1" marker-start="url(#cls-composition)" />
+<g class="class-node" data-id="User" data-label="User" data-annotation="abstract">
+  <rect x="430.9952380952377" y="1661.5" width="299.8" height="284" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="430.9952380952377" y="1661.5" width="299.8" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="580.8952380952377" y="1673.5" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;abstract&gt;&gt;</text>
+  <text x="580.8952380952377" y="1691.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">User</text>
+  <line x1="430.9952380952377" y1="1709.5" x2="730.7952380952377" y2="1709.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="438.9952380952377" y="1723.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">userId</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1743.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">username</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1763.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">passwordHash</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1783.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">fullName</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1803.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">email</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1823.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">phone</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1843.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)"># </tspan><tspan fill="var(--_text-sec)">role</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <line x1="430.9952380952377" y1="1857.5" x2="730.7952380952377" y2="1857.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="438.9952380952377" y="1871.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getUserId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1891.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getUsername()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1911.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getRole()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="438.9952380952377" y="1931.5" class="mono" dy="0.35em" font-size="11" font-weight="400" font-style="italic"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">validatePassword(String input)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">* boolean</tspan></text>
+</g>
+<g class="class-node" data-id="CustomerUser" data-label="CustomerUser">
+  <rect x="535.3285714285712" y="2085.7999999999997" width="286.59999999999997" height="128" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="535.3285714285712" y="2085.7999999999997" width="286.59999999999997" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="678.6285714285711" y="2101.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">CustomerUser</text>
+  <line x1="535.3285714285712" y1="2117.7999999999997" x2="821.9285714285711" y2="2117.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="543.3285714285712" y="2131.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">loyaltyPoints</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <line x1="535.3285714285712" y1="2145.7999999999997" x2="821.9285714285711" y2="2145.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="543.3285714285712" y="2159.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getLoyaltyPoints()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="543.3285714285712" y="2179.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">addLoyaltyPoints(int pts)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="543.3285714285712" y="2199.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">validatePassword(String input)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="AdminUser" data-label="AdminUser">
+  <rect x="208.72857142857129" y="2085.7999999999997" width="286.59999999999997" height="148" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="208.72857142857129" y="2085.7999999999997" width="286.59999999999997" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="352.02857142857124" y="2101.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">AdminUser</text>
+  <line x1="208.72857142857129" y1="2117.7999999999997" x2="495.32857142857125" y2="2117.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="216.72857142857129" y="2131.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">department</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="216.72857142857129" y="2151.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">permissions</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~String~</tspan></text>
+  <line x1="208.72857142857129" y1="2165.7999999999997" x2="495.32857142857125" y2="2165.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="216.72857142857129" y="2179.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getDepartment()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="216.72857142857129" y="2199.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">hasPermission(String perm)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="216.72857142857129" y="2219.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">validatePassword(String input)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="Movie" data-label="Movie">
+  <rect x="2541.967333333333" y="2494.1" width="174.4" height="288" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2541.967333333333" y="2494.1" width="174.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2629.167333333333" y="2510.1" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Movie</text>
+  <line x1="2541.967333333333" y1="2526.1" x2="2716.367333333333" y2="2526.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2549.967333333333" y="2540.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">id</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2560.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">title</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2580.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">genre</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2600.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">durationMinutes</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="2549.967333333333" y="2620.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">language</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2640.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">certification</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2660.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">basePrice</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+  <text x="2549.967333333333" y="2680.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">description</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <line x1="2541.967333333333" y1="2694.1" x2="2716.367333333333" y2="2694.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2549.967333333333" y="2708.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2728.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getTitle()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2748.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getGenre()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2549.967333333333" y="2768.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getBasePrice()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+</g>
+<g class="class-node" data-id="Auditorium" data-label="Auditorium">
+  <rect x="2314.367333333333" y="2494.1" width="187.6" height="208" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2314.367333333333" y="2494.1" width="187.6" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2408.1673333333333" y="2510.1" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Auditorium</text>
+  <line x1="2314.367333333333" y1="2526.1" x2="2501.967333333333" y2="2526.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2322.367333333333" y="2540.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">id</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2322.367333333333" y="2560.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">name</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2322.367333333333" y="2580.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">totalRows</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="2322.367333333333" y="2600.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">totalCols</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="2322.367333333333" y="2620.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">soundDolbyAtmos</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <line x1="2314.367333333333" y1="2634.1" x2="2501.967333333333" y2="2634.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2322.367333333333" y="2648.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2322.367333333333" y="2668.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2322.367333333333" y="2688.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getCapacity()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+</g>
+<g class="class-node" data-id="Show" data-label="Show">
+  <rect x="2287.967333333333" y="2085.7999999999997" width="240.4" height="268" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2287.967333333333" y="2085.7999999999997" width="240.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2408.167333333333" y="2101.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Show</text>
+  <line x1="2287.967333333333" y1="2117.7999999999997" x2="2528.367333333333" y2="2117.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2295.967333333333" y="2131.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">id</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2295.967333333333" y="2151.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">movie</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Movie</tspan></text>
+  <text x="2295.967333333333" y="2171.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">auditorium</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Auditorium</tspan></text>
+  <text x="2295.967333333333" y="2191.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">showDateTime</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">LocalDateTime</tspan></text>
+  <text x="2295.967333333333" y="2211.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">Seat~ seatMap</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Map~String,</tspan></text>
+  <line x1="2287.967333333333" y1="2225.7999999999997" x2="2528.367333333333" y2="2225.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2295.967333333333" y="2239.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2295.967333333333" y="2259.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getMovie()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Movie</tspan></text>
+  <text x="2295.967333333333" y="2279.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getAuditorium()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Auditorium</tspan></text>
+  <text x="2295.967333333333" y="2299.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getShowDateTime()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">LocalDateTime</tspan></text>
+  <text x="2295.967333333333" y="2319.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getSeat(String seatCode)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Seat</tspan></text>
+  <text x="2295.967333333333" y="2339.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getAvailableSeatsCount()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+</g>
+<g class="class-node" data-id="Seat" data-label="Seat">
+  <rect x="2053.767333333333" y="2514.1" width="220.6" height="248" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2053.767333333333" y="2514.1" width="220.6" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2164.0673333333334" y="2530.1" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Seat</text>
+  <line x1="2053.767333333333" y1="2546.1" x2="2274.367333333333" y2="2546.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2061.767333333333" y="2560.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">seatCode</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2061.767333333333" y="2580.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">rowNum</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="2061.767333333333" y="2600.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">colNum</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+  <text x="2061.767333333333" y="2620.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">tier</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">SeatTier</tspan></text>
+  <text x="2061.767333333333" y="2640.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">status</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">SeatStatus</tspan></text>
+  <line x1="2053.767333333333" y1="2654.1" x2="2274.367333333333" y2="2654.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2061.767333333333" y="2668.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getSeatCode()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="2061.767333333333" y="2688.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getTier()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">SeatTier</tspan></text>
+  <text x="2061.767333333333" y="2708.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getStatus()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">SeatStatus</tspan></text>
+  <text x="2061.767333333333" y="2728.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">setStatus(SeatStatus s)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="2061.767333333333" y="2748.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">isAvailable()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="SeatTier" data-label="SeatTier" data-annotation="enumeration">
+  <rect x="2093.834" y="2922.3999999999996" width="214" height="144" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2093.834" y="2922.3999999999996" width="214" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2200.834" y="2934.3999999999996" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="2200.834" y="2952.3999999999996" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">SeatTier</text>
+  <line x1="2093.834" y1="2970.3999999999996" x2="2307.834" y2="2970.3999999999996" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2101.834" y="2984.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">SILVER</tspan></text>
+  <text x="2101.834" y="3004.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">GOLD</tspan></text>
+  <text x="2101.834" y="3024.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">PLATINUM</tspan></text>
+  <line x1="2093.834" y1="3038.3999999999996" x2="2307.834" y2="3038.3999999999996" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2101.834" y="3052.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPriceMultiplier()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+</g>
+<g class="class-node" data-id="SeatStatus" data-label="SeatStatus" data-annotation="enumeration">
+  <rect x="1933.8339999999996" y="2922.3999999999996" width="120" height="144" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1933.8339999999996" y="2922.3999999999996" width="120" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1993.8339999999996" y="2934.3999999999996" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="1993.8339999999996" y="2952.3999999999996" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">SeatStatus</text>
+  <line x1="1933.8339999999996" y1="2970.3999999999996" x2="2053.834" y2="2970.3999999999996" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1941.8339999999996" y="2984.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">AVAILABLE</tspan></text>
+  <text x="1941.8339999999996" y="3004.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">PENDING</tspan></text>
+  <text x="1941.8339999999996" y="3024.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">BOOKED</tspan></text>
+  <text x="1941.8339999999996" y="3044.3999999999996" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">LOCKED</tspan></text>
+  <line x1="1933.8339999999996" y1="3058.3999999999996" x2="2053.834" y2="3058.3999999999996" stroke="var(--_node-stroke)" stroke-width="0.75" />
+</g>
+<g class="class-node" data-id="Booking" data-label="Booking">
+  <rect x="1300.0999999999997" y="1617.5" width="227.2" height="328" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1300.0999999999997" y="1617.5" width="227.2" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1413.6999999999996" y="1633.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Booking</text>
+  <line x1="1300.0999999999997" y1="1649.5" x2="1527.2999999999997" y2="1649.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1308.0999999999997" y="1663.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">bookingId</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1308.0999999999997" y="1683.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">show</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Show</tspan></text>
+  <text x="1308.0999999999997" y="1703.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">customer</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">CustomerUser</tspan></text>
+  <text x="1308.0999999999997" y="1723.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">reservedSeats</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Seat~</tspan></text>
+  <text x="1308.0999999999997" y="1743.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">totalAmount</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+  <text x="1308.0999999999997" y="1763.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">status</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">BookingStatus</tspan></text>
+  <text x="1308.0999999999997" y="1783.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">bookingTime</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">LocalDateTime</tspan></text>
+  <line x1="1300.0999999999997" y1="1797.5" x2="1527.2999999999997" y2="1797.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1308.0999999999997" y="1811.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getBookingId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1308.0999999999997" y="1831.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getShow()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Show</tspan></text>
+  <text x="1308.0999999999997" y="1851.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getCustomer()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">CustomerUser</tspan></text>
+  <text x="1308.0999999999997" y="1871.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getReservedSeats()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Seat~</tspan></text>
+  <text x="1308.0999999999997" y="1891.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getTotalAmount()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+  <text x="1308.0999999999997" y="1911.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">confirm()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1308.0999999999997" y="1931.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">cancel()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="BookingStatus" data-label="BookingStatus" data-annotation="enumeration">
+  <rect x="1369.928571428571" y="2085.7999999999997" width="120" height="144" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1369.928571428571" y="2085.7999999999997" width="120" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1429.928571428571" y="2097.7999999999997" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="1429.928571428571" y="2115.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">BookingStatus</text>
+  <line x1="1369.928571428571" y1="2133.7999999999997" x2="1489.928571428571" y2="2133.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1377.928571428571" y="2147.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">PENDING</tspan></text>
+  <text x="1377.928571428571" y="2167.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">CONFIRMED</tspan></text>
+  <text x="1377.928571428571" y="2187.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">CANCELLED</tspan></text>
+  <text x="1377.928571428571" y="2207.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">EXPIRED</tspan></text>
+  <line x1="1369.928571428571" y1="2221.7999999999997" x2="1489.928571428571" y2="2221.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+</g>
+<g class="class-node" data-id="PaymentTransaction" data-label="PaymentTransaction">
+  <rect x="1129.1285714285711" y="2115.7999999999997" width="200.79999999999998" height="208" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1129.1285714285711" y="2115.7999999999997" width="200.79999999999998" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1229.5285714285712" y="2131.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PaymentTransaction</text>
+  <line x1="1129.1285714285711" y1="2147.7999999999997" x2="1329.928571428571" y2="2147.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1137.1285714285711" y="2161.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">transactionId</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1137.1285714285711" y="2181.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">bookingId</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1137.1285714285711" y="2201.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">amount</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+  <text x="1137.1285714285711" y="2221.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">paymentMethodName</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1137.1285714285711" y="2241.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">status</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">PaymentStatus</tspan></text>
+  <text x="1137.1285714285711" y="2261.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">timestamp</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">LocalDateTime</tspan></text>
+  <line x1="1129.1285714285711" y1="2275.7999999999997" x2="1329.928571428571" y2="2275.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1137.1285714285711" y="2289.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getTransactionId()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="1137.1285714285711" y="2309.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getStatus()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">PaymentStatus</tspan></text>
+</g>
+<g class="class-node" data-id="PaymentStatus" data-label="PaymentStatus" data-annotation="enumeration">
+  <rect x="1169.5285714285712" y="2494.1" width="120" height="124" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1169.5285714285712" y="2494.1" width="120" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1229.5285714285712" y="2506.1" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;enumeration&gt;&gt;</text>
+  <text x="1229.5285714285712" y="2524.1" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PaymentStatus</text>
+  <line x1="1169.5285714285712" y1="2542.1" x2="1289.5285714285712" y2="2542.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1177.5285714285712" y="2556.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">SUCCESS</tspan></text>
+  <text x="1177.5285714285712" y="2576.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">FAILED</tspan></text>
+  <text x="1177.5285714285712" y="2596.1" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-sec)">REFUNDED</tspan></text>
+  <line x1="1169.5285714285712" y1="2610.1" x2="1289.5285714285712" y2="2610.1" stroke="var(--_node-stroke)" stroke-width="0.75" />
+</g>
+<g class="class-node" data-id="Searchable" data-label="Searchable&lt;T&gt;" data-annotation="interface">
+  <rect x="40" y="40" width="280" height="104" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="40" width="280" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="180" y="52" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;interface&gt;&gt;</text>
+  <text x="180" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Searchable&lt;T&gt;</text>
+  <line x1="40" y1="88" x2="320" y2="88" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="40" y1="96" x2="320" y2="96" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="48" y="110" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">searchByTitle(String keyword)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~T~</tspan></text>
+  <text x="48" y="130" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">filterByGenre(String genre)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~T~</tspan></text>
+</g>
+<g class="class-node" data-id="Cancellable" data-label="Cancellable" data-annotation="interface">
+  <rect x="861.9285714285711" y="2085.7999999999997" width="227.2" height="104" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="861.9285714285711" y="2085.7999999999997" width="227.2" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="975.5285714285711" y="2097.7999999999997" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;interface&gt;&gt;</text>
+  <text x="975.5285714285711" y="2115.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Cancellable</text>
+  <line x1="861.9285714285711" y1="2133.7999999999997" x2="1089.1285714285711" y2="2133.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="861.9285714285711" y1="2141.7999999999997" x2="1089.1285714285711" y2="2141.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="869.9285714285711" y="2155.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">canCancel()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="869.9285714285711" y="2175.7999999999997" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">executeCancellation()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="PaymentStrategy" data-label="PaymentStrategy" data-annotation="interface">
+  <rect x="451.72" y="40" width="372.4" height="104" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="451.72" y="40" width="372.4" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="637.9200000000001" y="52" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;interface&gt;&gt;</text>
+  <text x="637.9200000000001" y="70" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PaymentStrategy</text>
+  <line x1="451.72" y1="88" x2="824.12" y2="88" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="451.72" y1="96" x2="824.12" y2="96" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="459.72" y="110" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processPayment(double amount, String refId)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="459.72" y="130" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPaymentMethodName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+</g>
+<g class="class-node" data-id="CreditCardPayment" data-label="CreditCardPayment">
+  <rect x="340" y="284.3" width="372.4" height="148" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="340" y="284.3" width="372.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="526.2" y="300.3" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">CreditCardPayment</text>
+  <line x1="340" y1="316.3" x2="712.4" y2="316.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="348" y="330.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">cardNumber</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="348" y="350.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">cardHolder</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <text x="348" y="370.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">expiry</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <line x1="340" y1="384.3" x2="712.4" y2="384.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="348" y="398.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processPayment(double amount, String refId)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="348" y="418.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPaymentMethodName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+</g>
+<g class="class-node" data-id="UPIPayment" data-label="UPIPayment">
+  <rect x="1577.1999999999998" y="284.3" width="372.4" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1577.1999999999998" y="284.3" width="372.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1763.3999999999999" y="300.3" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">UPIPayment</text>
+  <line x1="1577.1999999999998" y1="316.3" x2="1949.6" y2="316.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1585.1999999999998" y="330.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">upiId</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <line x1="1577.1999999999998" y1="344.3" x2="1949.6" y2="344.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1585.1999999999998" y="358.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processPayment(double amount, String refId)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="1585.1999999999998" y="378.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPaymentMethodName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+</g>
+<g class="class-node" data-id="NetBankingPayment" data-label="NetBankingPayment">
+  <rect x="1164.8" y="284.3" width="372.4" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1164.8" y="284.3" width="372.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1351" y="300.3" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">NetBankingPayment</text>
+  <line x1="1164.8" y1="316.3" x2="1537.1999999999998" y2="316.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1172.8" y="330.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">bankName</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+  <line x1="1164.8" y1="344.3" x2="1537.1999999999998" y2="344.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1172.8" y="358.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processPayment(double amount, String refId)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="1172.8" y="378.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPaymentMethodName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+</g>
+<g class="class-node" data-id="ThirdPartyPaymentGateway" data-label="ThirdPartyPaymentGateway" data-annotation="interface">
+  <rect x="726" y="572.6" width="425.2" height="84" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="726" y="572.6" width="425.2" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="938.6" y="584.6" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;interface&gt;&gt;</text>
+  <text x="938.6" y="602.6" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">ThirdPartyPaymentGateway</text>
+  <line x1="726" y1="620.6" x2="1151.2" y2="620.6" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="726" y1="628.6" x2="1151.2" y2="628.6" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="734" y="642.6" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">executeGatewayTransaction(double amt, String token)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="MockCardPayment" data-label="MockCardPayment">
+  <rect x="726" y="796.9" width="425.2" height="68" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="726" y="796.9" width="425.2" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="938.6" y="812.9" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">MockCardPayment</text>
+  <line x1="726" y1="828.9" x2="1151.2" y2="828.9" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="726" y1="836.9" x2="1151.2" y2="836.9" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="734" y="850.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">executeGatewayTransaction(double amt, String token)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+</g>
+<g class="class-node" data-id="LegacyGatewayAdapter" data-label="LegacyGatewayAdapter">
+  <rect x="752.4" y="304.3" width="372.4" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="752.4" y="304.3" width="372.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="938.5999999999999" y="320.3" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">LegacyGatewayAdapter</text>
+  <line x1="752.4" y1="336.3" x2="1124.8" y2="336.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="760.4" y="350.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">gateway</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">ThirdPartyPaymentGateway</tspan></text>
+  <line x1="752.4" y1="364.3" x2="1124.8" y2="364.3" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="760.4" y="378.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processPayment(double amount, String refId)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="760.4" y="398.3" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getPaymentMethodName()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">String</tspan></text>
+</g>
+<g class="class-node" data-id="DatabaseManager" data-label="DatabaseManager" data-annotation="singleton">
+  <rect x="1986.2999999999997" y="1617.5" width="359.2" height="244" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1986.2999999999997" y="1617.5" width="359.2" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2165.8999999999996" y="1629.5" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;singleton&gt;&gt;</text>
+  <text x="2165.8999999999996" y="1647.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">DatabaseManager</text>
+  <line x1="1986.2999999999997" y1="1665.5" x2="2345.4999999999995" y2="1665.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1994.2999999999997" y="1679.5" class="mono" dy="0.35em" font-size="11" font-weight="400" text-decoration="underline"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">instance</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">DatabaseManager</tspan></text>
+  <text x="1994.2999999999997" y="1699.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">connection</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Connection</tspan></text>
+  <line x1="1986.2999999999997" y1="1713.5" x2="2345.4999999999995" y2="1713.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1994.2999999999997" y="1727.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">DatabaseManager()</tspan></text>
+  <text x="1994.2999999999997" y="1747.5" class="mono" dy="0.35em" font-size="11" font-weight="400" text-decoration="underline"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getInstance()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">$ DatabaseManager</tspan></text>
+  <text x="1994.2999999999997" y="1767.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getConnection()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Connection</tspan></text>
+  <text x="1994.2999999999997" y="1787.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">initDatabase()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1994.2999999999997" y="1807.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">seedInitialData()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1994.2999999999997" y="1827.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">loadAllMovies()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Movie~</tspan></text>
+  <text x="1994.2999999999997" y="1847.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">saveBooking(Booking b, PaymentTransaction t)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="BookingManager" data-label="BookingManager" data-annotation="singleton">
+  <rect x="1916.9999999999998" y="1213.2" width="497.79999999999995" height="264" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1916.9999999999998" y="1213.2" width="497.79999999999995" height="48" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2165.8999999999996" y="1225.2" text-anchor="middle" dy="0.35em" font-size="10" font-weight="500" font-style="italic" fill="var(--_text-muted)">&lt;&lt;singleton&gt;&gt;</text>
+  <text x="2165.8999999999996" y="1243.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">BookingManager</text>
+  <line x1="1916.9999999999998" y1="1261.2" x2="2414.7999999999997" y2="1261.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1924.9999999999998" y="1275.2" class="mono" dy="0.35em" font-size="11" font-weight="400" text-decoration="underline"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">instance</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">BookingManager</tspan></text>
+  <text x="1924.9999999999998" y="1295.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">dbManager</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">DatabaseManager</tspan></text>
+  <text x="1924.9999999999998" y="1315.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">movies</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Movie~</tspan></text>
+  <text x="1924.9999999999998" y="1335.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">shows</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Show~</tspan></text>
+  <text x="1924.9999999999998" y="1355.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">bookings</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Booking~</tspan></text>
+  <line x1="1916.9999999999998" y1="1369.2" x2="2414.7999999999997" y2="1369.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1924.9999999999998" y="1383.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">BookingManager()</tspan></text>
+  <text x="1924.9999999999998" y="1403.2" class="mono" dy="0.35em" font-size="11" font-weight="400" text-decoration="underline"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">getInstance()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">$ BookingManager</tspan></text>
+  <text x="1924.9999999999998" y="1423.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">createPendingBooking(Show s, CustomerUser c, List~Seat~ seats)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Booking</tspan></text>
+  <text x="1924.9999999999998" y="1443.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">confirmBooking(Booking b, PaymentStrategy strategy)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">boolean</tspan></text>
+  <text x="1924.9999999999998" y="1463.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">calculateTotalOccupancyRecursive(List~Show~ shows, int idx)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">int</tspan></text>
+</g>
+<g class="class-node" data-id="MovieService" data-label="MovieService">
+  <rect x="2489.234" y="1727.5" width="306.4" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2489.234" y="1727.5" width="306.4" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2642.4339999999997" y="1743.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">MovieService</text>
+  <line x1="2489.234" y1="1759.5" x2="2795.634" y2="1759.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2497.234" y="1773.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">catalogue</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Movie~</tspan></text>
+  <line x1="2489.234" y1="1787.5" x2="2795.634" y2="1787.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="2497.234" y="1801.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">searchByTitle(String keyword)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Movie~</tspan></text>
+  <text x="2497.234" y="1821.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">filterByGenre(String genre)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Movie~</tspan></text>
+</g>
+<g class="class-node" data-id="PricingEngine" data-label="PricingEngine">
+  <rect x="1567.2999999999997" y="1617.5" width="379" height="68" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1567.2999999999997" y="1617.5" width="379" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1756.7999999999997" y="1633.5" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">PricingEngine</text>
+  <line x1="1567.2999999999997" y1="1649.5" x2="1946.2999999999997" y2="1649.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="1567.2999999999997" y1="1657.5" x2="1946.2999999999997" y2="1657.5" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1575.2999999999997" y="1671.5" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">calculateFinalPrice(Show s, List~Seat~ seats)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">double</tspan></text>
+</g>
+<g class="class-node" data-id="Searchable~Movie~" data-label="Searchable~Movie~">
+  <rect x="2573.0674999999997" y="2085.7999999999997" width="138.733" height="48" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="2573.0674999999997" y="2085.7999999999997" width="138.733" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="2642.4339999999997" y="2101.7999999999997" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">Searchable~Movie~</text>
+  <line x1="2573.0674999999997" y1="2117.7999999999997" x2="2711.8005" y2="2117.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <line x1="2573.0674999999997" y1="2125.7999999999997" x2="2711.8005" y2="2125.7999999999997" stroke="var(--_node-stroke)" stroke-width="0.75" />
+</g>
+<g class="class-node" data-id="CineBookApp" data-label="CineBookApp">
+  <rect x="1141.2777777777776" y="884.9" width="247" height="188" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1141.2777777777776" y="884.9" width="247" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1264.7777777777776" y="900.9" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">CineBookApp</text>
+  <line x1="1141.2777777777776" y1="916.9" x2="1388.2777777777776" y2="916.9" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1149.2777777777776" y="930.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">manager</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">BookingManager</tspan></text>
+  <text x="1149.2777777777776" y="950.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">currentUser</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">User</tspan></text>
+  <text x="1149.2777777777776" y="970.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">cardLayout</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">CardLayout</tspan></text>
+  <text x="1149.2777777777776" y="990.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">mainContainer</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">JPanel</tspan></text>
+  <line x1="1141.2777777777776" y1="1004.9" x2="1388.2777777777776" y2="1004.9" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1149.2777777777776" y="1018.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">switchView(String viewName)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1149.2777777777776" y="1038.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">login(User user)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1149.2777777777776" y="1058.9" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">logout()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="MoviePanel" data-label="MoviePanel">
+  <rect x="548" y="1213.2" width="286.59999999999997" height="128" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="548" y="1213.2" width="286.59999999999997" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="691.3" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">MoviePanel</text>
+  <line x1="548" y1="1245.2" x2="834.5999999999999" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="556" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">parentApp</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">CineBookApp</tspan></text>
+  <text x="556" y="1279.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">searchField</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">JTextField</tspan></text>
+  <text x="556" y="1299.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">genreBox</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">JComboBox</tspan></text>
+  <line x1="548" y1="1313.2" x2="834.5999999999999" y2="1313.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="556" y="1327.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">renderCatalogue(List~Movie~ list)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="MovieDetailsPanel" data-label="MovieDetailsPanel">
+  <rect x="874.5999999999999" y="1213.2" width="253.6" height="88" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="874.5999999999999" y="1213.2" width="253.6" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1001.3999999999999" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">MovieDetailsPanel</text>
+  <line x1="874.5999999999999" y1="1245.2" x2="1128.1999999999998" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="882.5999999999999" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">selectedMovie</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Movie</tspan></text>
+  <line x1="874.5999999999999" y1="1273.2" x2="1128.1999999999998" y2="1273.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="882.5999999999999" y="1287.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">displayMovieDetails(Movie m)</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="SeatSelectionPanel" data-label="SeatSelectionPanel">
+  <rect x="1682.7999999999997" y="1213.2" width="194.2" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1682.7999999999997" y="1213.2" width="194.2" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1779.8999999999996" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">SeatSelectionPanel</text>
+  <line x1="1682.7999999999997" y1="1245.2" x2="1876.9999999999998" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1690.7999999999997" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">selectedShow</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Show</tspan></text>
+  <text x="1690.7999999999997" y="1279.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">selectedSeats</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">List~Seat~</tspan></text>
+  <line x1="1682.7999999999997" y1="1293.2" x2="1876.9999999999998" y2="1293.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1690.7999999999997" y="1307.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">renderSeatGrid()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="CheckoutPanel" data-label="CheckoutPanel">
+  <rect x="40" y="1213.2" width="233.79999999999998" height="108" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="40" y="1213.2" width="233.79999999999998" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="156.89999999999998" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">CheckoutPanel</text>
+  <line x1="40" y1="1245.2" x2="273.79999999999995" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="48" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">currentBooking</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Booking</tspan></text>
+  <text x="48" y="1279.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">activeStrategy</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">PaymentStrategy</tspan></text>
+  <line x1="40" y1="1293.2" x2="273.79999999999995" y2="1293.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="48" y="1307.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">processCheckout()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="BookingConfirmationPanel" data-label="BookingConfirmationPanel">
+  <rect x="313.8000000000002" y="1213.2" width="194.2" height="88" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="313.8000000000002" y="1213.2" width="194.2" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="410.9000000000002" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">BookingConfirmationPanel</text>
+  <line x1="313.8000000000002" y1="1245.2" x2="508.00000000000017" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="321.8000000000002" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">confirmedBooking</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">Booking</tspan></text>
+  <line x1="313.8000000000002" y1="1273.2" x2="508.00000000000017" y2="1273.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="321.8000000000002" y="1287.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">displayReceipt()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="BookingHistoryPanel" data-label="BookingHistoryPanel">
+  <rect x="1428.7999999999997" y="1213.2" width="214" height="88" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1428.7999999999997" y="1213.2" width="214" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1535.7999999999997" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">BookingHistoryPanel</text>
+  <line x1="1428.7999999999997" y1="1245.2" x2="1642.7999999999997" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1436.7999999999997" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">user</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">CustomerUser</tspan></text>
+  <line x1="1428.7999999999997" y1="1273.2" x2="1642.7999999999997" y2="1273.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1436.7999999999997" y="1287.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">loadCustomerBookings()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<g class="class-node" data-id="AdminPanel" data-label="AdminPanel">
+  <rect x="1168.1999999999998" y="1213.2" width="220.6" height="128" rx="0" ry="0" fill="var(--_node-fill)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <rect x="1168.1999999999998" y="1213.2" width="220.6" height="32" rx="0" ry="0" fill="var(--_group-hdr)" stroke="var(--_node-stroke)" stroke-width="1" />
+  <text x="1278.4999999999998" y="1229.2" text-anchor="middle" font-size="13" font-weight="700" fill="var(--_text)" dy="4.55">AdminPanel</text>
+  <line x1="1168.1999999999998" y1="1245.2" x2="1388.7999999999997" y2="1245.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1176.1999999999998" y="1259.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">- </tspan><tspan fill="var(--_text-sec)">adminTabs</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">JTabbedPane</tspan></text>
+  <line x1="1168.1999999999998" y1="1273.2" x2="1388.7999999999997" y2="1273.2" stroke="var(--_node-stroke)" stroke-width="0.75" />
+  <text x="1176.1999999999998" y="1287.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">renderMovieManagement()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1176.1999999999998" y="1307.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">renderShowScheduling()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+  <text x="1176.1999999999998" y="1327.2" class="mono" dy="0.35em" font-size="11" font-weight="400"><tspan fill="var(--_text-faint)">+ </tspan><tspan fill="var(--_text-sec)">renderAuditReports()</tspan><tspan fill="var(--_text-faint)">: </tspan><tspan fill="var(--_text-muted)">void</tspan></text>
+</g>
+<text x="597.3069047619043" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Inheritance</text>
+<text x="318.47357142857135" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Inheritance</text>
+<text x="2593.830333333333" y="2415.95" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Composition</text>
+<text x="2372.830333333333" y="2415.95" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Composition</text>
+<text x="2158.6659999999997" y="2415.95" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">1..* Aggregates</text>
+<text x="2239.25" y="2844.25" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Classified By</text>
+<text x="1975.1289999999995" y="2844.25" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">State</text>
+<text x="2333.3576666666663" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">References</text>
+<text x="693.7312380952378" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Booked By</text>
+<text x="2076.9129999999996" y="2211.7999999999997" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Reserves</text>
+<text x="1400.828571428571" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Has State</text>
+<text x="1203.9925714285712" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Paid via</text>
+<text x="1383.4714285714283" y="1959.5" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">1</text>
+<text x="1215.5285714285712" y="2101.7999999999997" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">1</text>
+<text x="1210.823571428571" y="2415.95" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">State</text>
+<text x="943.161571428571" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="493.833" y="206.15" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="1731.0329999999997" y="206.15" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="1318.633" y="206.15" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="906.233" y="206.15" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="915.1429999999999" y="494.45" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Adapts</text>
+<text x="906.233" y="718.75" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="2610.067" y="2007.65" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Implements</text>
+<text x="2146.6009999999997" y="1539.35" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Uses</text>
+<text x="2606.5029999999997" y="1539.35" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Coordinates</text>
+<text x="1712.2559999999999" y="1539.35" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Evaluates Price</text>
+<text x="1384.5999999999997" y="1539.35" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Manages</text>
+<text x="2415.8669999999997" y="1773.5" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Schedules</text>
+<text x="2135.3149999999996" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Controller</text>
+<text x="660.418" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="970.5179999999999" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="1749.0179999999998" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="126.01799999999997" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="380.018" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="1504.918" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+<text x="1247.618" y="1135.0500000000002" font-size="11" text-anchor="middle" font-weight="400" fill="var(--_text-muted)" dy="3.8499999999999996">Card View</text>
+</svg>

@@ -1,11 +1,12 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 
-// Module 3: BookingHistoryPanel (Screen 6)
+// Module 3: BookingHistoryPanel (Screen 6 - Modern My Bookings & E-Ticket Preview)
 public class BookingHistoryPanel extends JPanel {
     private final MainFrame parent;
     private final BookingManager manager;
@@ -20,19 +21,20 @@ public class BookingHistoryPanel extends JPanel {
         this.manager = manager;
         this.bookingService = bookingService;
 
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(0, 16));
         setBackground(UIConstants.COLOR_BG_LIGHT);
-        setBorder(new EmptyBorder(16, 24, 16, 24));
+        setBorder(new EmptyBorder(20, 28, 20, 28));
 
         initializeUI();
     }
 
     private void initializeUI() {
+        // Modern Top Card
         JPanel topCard = new JPanel(new BorderLayout());
         topCard.setBackground(Color.WHITE);
         topCard.setBorder(BorderFactory.createCompoundBorder(
                 new LineBorder(UIConstants.COLOR_BORDER, 1, true),
-                new EmptyBorder(14, 18, 14, 18)
+                new EmptyBorder(16, 20, 16, 20)
         ));
 
         customerStatusLabel = new JLabel("My Booking Records");
@@ -40,15 +42,23 @@ public class BookingHistoryPanel extends JPanel {
         customerStatusLabel.setForeground(UIConstants.COLOR_TEXT_DARK);
 
         JButton refreshBtn = new JButton("Refresh");
-        refreshBtn.setFont(UIConstants.FONT_SMALL);
-        refreshBtn.setBackground(UIConstants.COLOR_BG_LIGHT);
+        refreshBtn.setFont(UIConstants.FONT_BOLD);
+        refreshBtn.setBackground(new Color(241, 245, 249));
+        refreshBtn.setForeground(UIConstants.COLOR_TEXT_DARK);
+        refreshBtn.setFocusPainted(false);
+        refreshBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        refreshBtn.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(UIConstants.COLOR_BORDER, 1, true),
+                new EmptyBorder(6, 14, 6, 14)
+        ));
         refreshBtn.addActionListener(e -> refreshHistory());
 
         topCard.add(customerStatusLabel, BorderLayout.WEST);
         topCard.add(refreshBtn, BorderLayout.EAST);
         add(topCard, BorderLayout.NORTH);
 
-        String[] columns = {"Booking ID", "Movie", "Screen", "Showtime", "Seats", "Total Amount", "Booking Status", "Cancellable?"};
+        // Modern Tabular Ledger
+        String[] columns = {"Booking ID", "Movie Title", "Auditorium", "Showtime", "Seats", "Total Paid", "Status", "Cancellation"};
         tableModel = new DefaultTableModel(columns, 0) {
             @Override
             public boolean isCellEditable(int row, int col) { return false; }
@@ -56,32 +66,63 @@ public class BookingHistoryPanel extends JPanel {
 
         bookingsTable = new JTable(tableModel);
         bookingsTable.setFont(UIConstants.FONT_REGULAR);
-        bookingsTable.setRowHeight(28);
+        bookingsTable.setRowHeight(34);
+        bookingsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        bookingsTable.setSelectionBackground(new Color(238, 242, 255));
+        bookingsTable.setSelectionForeground(UIConstants.COLOR_TEXT_DARK);
+        bookingsTable.setShowGrid(true);
+        bookingsTable.setGridColor(new Color(241, 245, 249));
+
+        // Modern Table Header
         bookingsTable.getTableHeader().setFont(UIConstants.FONT_BOLD);
         bookingsTable.getTableHeader().setBackground(UIConstants.COLOR_PRIMARY);
         bookingsTable.getTableHeader().setForeground(Color.WHITE);
-        bookingsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        bookingsTable.getTableHeader().setPreferredSize(new Dimension(0, 36));
+
+        // Center align specific columns
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        bookingsTable.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
+        bookingsTable.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
+        bookingsTable.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
+        bookingsTable.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
+        bookingsTable.getColumnModel().getColumn(7).setCellRenderer(centerRenderer);
 
         JScrollPane scrollPane = new JScrollPane(bookingsTable);
-        scrollPane.setBorder(new LineBorder(UIConstants.COLOR_BORDER, 1));
+        scrollPane.setBorder(new LineBorder(UIConstants.COLOR_BORDER, 1, true));
+        scrollPane.getViewport().setBackground(Color.WHITE);
         add(scrollPane, BorderLayout.CENTER);
 
+        // Action Toolbar
         JPanel bottomCard = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 12));
         bottomCard.setBackground(Color.WHITE);
-        bottomCard.setBorder(new EmptyBorder(8, 0, 0, 0));
+        bottomCard.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(UIConstants.COLOR_BORDER, 1, true),
+                new EmptyBorder(10, 16, 10, 16)
+        ));
 
-        JButton viewTicketBtn = new JButton("View Ticket Details");
+        JButton viewTicketBtn = new JButton("View E-Ticket  📄");
         viewTicketBtn.setFont(UIConstants.FONT_BOLD);
-        viewTicketBtn.setBackground(UIConstants.COLOR_PRIMARY);
+        viewTicketBtn.setBackground(UIConstants.COLOR_ACCENT);
         viewTicketBtn.setForeground(Color.WHITE);
         viewTicketBtn.setFocusPainted(false);
+        viewTicketBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        viewTicketBtn.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(UIConstants.COLOR_ACCENT_HOVER, 1, true),
+                new EmptyBorder(8, 16, 8, 16)
+        ));
         viewTicketBtn.addActionListener(e -> viewSelectedTicket());
 
         JButton cancelBookingBtn = new JButton("Cancel Selected Booking");
         cancelBookingBtn.setFont(UIConstants.FONT_BOLD);
-        cancelBookingBtn.setBackground(new Color(220, 53, 69));
-        cancelBookingBtn.setForeground(Color.WHITE);
+        cancelBookingBtn.setBackground(new Color(254, 242, 242));
+        cancelBookingBtn.setForeground(new Color(220, 38, 38));
         cancelBookingBtn.setFocusPainted(false);
+        cancelBookingBtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        cancelBookingBtn.setBorder(BorderFactory.createCompoundBorder(
+                new LineBorder(new Color(254, 202, 202), 1, true),
+                new EmptyBorder(8, 16, 8, 16)
+        ));
         cancelBookingBtn.addActionListener(e -> cancelSelectedBooking());
 
         bottomCard.add(viewTicketBtn);
@@ -92,12 +133,22 @@ public class BookingHistoryPanel extends JPanel {
     public void refreshHistory() {
         tableModel.setRowCount(0);
         User user = manager.getCurrentUser();
-        customerStatusLabel.setText("Bookings for: " + user.getName() + " (" + user.getRole() + ")");
+        if (user == null) {
+            customerStatusLabel.setText("Please log in to view booking records.");
+            return;
+        }
 
-        List<Booking> userBookings = manager.getBookingsForCustomer(user.getId());
+        List<Booking> userBookings;
+        if ("Admin".equalsIgnoreCase(user.getRole())) {
+            customerStatusLabel.setText("All Cinema Bookings (Administrator View - " + user.getName() + ")");
+            userBookings = manager.getBookings();
+        } else {
+            customerStatusLabel.setText("Bookings for: " + user.getName() + " (" + user.getRole() + ")");
+            userBookings = manager.getBookingsForCustomer(user.getId());
+        }
 
         for (Booking b : userBookings) {
-            String canCancelStr = b.isCancellable() ? "YES" : "NO (Past/Closed)";
+            String canCancelStr = b.isCancellable() ? "Eligible" : "Non-Cancellable";
             tableModel.addRow(new Object[]{
                     b.getId(),
                     b.getShow().getMovie().getTitle(),
@@ -114,7 +165,7 @@ public class BookingHistoryPanel extends JPanel {
     private void viewSelectedTicket() {
         int row = bookingsTable.getSelectedRow();
         if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a booking from the table.", "Notice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a booking from the table to view the e-ticket.", "Selection Required", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -124,20 +175,22 @@ public class BookingHistoryPanel extends JPanel {
 
         if (booking != null) {
             String details = String.format(
-                    "=========================================\n" +
-                    "             CINEBOOK E-TICKET           \n" +
-                    "=========================================\n" +
-                    "Booking ID:      %s\n" +
-                    "Customer:        %s\n" +
-                    "Movie:           %s\n" +
-                    "Screen:          %s\n" +
-                    "Showtime:        %s\n" +
-                    "Seats:           %s\n" +
-                    "Status:          %s\n" +
-                    "Total Paid:      $%.2f\n" +
-                    "Payment Mode:    %s\n" +
-                    "Gateway Ref:     %s\n" +
-                    "=========================================\n",
+                    "==========================================================\n" +
+                    "                  CINEBOOK CINEMA E-TICKET                \n" +
+                    "==========================================================\n" +
+                    "Booking Reference:    %s\n" +
+                    "Customer Name:        %s\n" +
+                    "Movie Presentation:   %s\n" +
+                    "Screen / Hall:        %s\n" +
+                    "Screening Showtime:   %s\n" +
+                    "Seats Allocated:      %s\n" +
+                    "Booking Status:       %s\n" +
+                    "Total Amount Paid:    $%.2f (Incl. 18%% GST)\n" +
+                    "Payment Method:       %s\n" +
+                    "Gateway Auth Ref:     %s\n" +
+                    "==========================================================\n" +
+                    "   * Please present this confirmation at the theater lobby.\n" +
+                    "   * Cancellations permitted up to 2 hours prior to showtime.\n",
                     booking.getId(),
                     booking.getCustomer().getName(),
                     booking.getShow().getMovie().getTitle(),
@@ -146,49 +199,47 @@ public class BookingHistoryPanel extends JPanel {
                     String.join(", ", booking.getSeatIds()),
                     booking.getBookingStatus().getDisplayName(),
                     booking.getTotalAmount(),
-                    (txn != null ? txn.getPaymentMethodName() : "N/A"),
-                    (txn != null ? txn.getGatewayReference() : "N/A")
+                    (txn != null ? txn.getPaymentMethodName() : "Simulated Checkout"),
+                    (txn != null ? txn.getGatewayReference() : "OFFLINE-RECORD")
             );
 
             JTextArea area = new JTextArea(details);
-            area.setFont(new Font("Monospaced", Font.PLAIN, 12));
+            area.setFont(new Font("Consolas", Font.PLAIN, 12));
             area.setEditable(false);
-            JOptionPane.showMessageDialog(this, new JScrollPane(area), "Ticket Details - " + booking.getId(), JOptionPane.INFORMATION_MESSAGE);
+            area.setBackground(new Color(248, 250, 252));
+            area.setBorder(new EmptyBorder(12, 12, 12, 12));
+
+            JScrollPane scroll = new JScrollPane(area);
+            scroll.setPreferredSize(new Dimension(520, 360));
+            JOptionPane.showMessageDialog(this, scroll, "CineBook Digital Admission Ticket", JOptionPane.PLAIN_MESSAGE);
         }
     }
 
     private void cancelSelectedBooking() {
         int row = bookingsTable.getSelectedRow();
         if (row < 0) {
-            JOptionPane.showMessageDialog(this, "Please select a booking to cancel.", "Notice", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Select a booking to cancel.", "Notice", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
         String bookingId = (String) tableModel.getValueAt(row, 0);
-        Booking booking = manager.findBookingById(bookingId);
 
-        if (booking == null) return;
-
-        if (!booking.isCancellable()) {
-            JOptionPane.showMessageDialog(this,
-                    "This booking cannot be cancelled.\nPolicy: Bookings can only be cancelled at least 2 hours before showtime.",
-                    "Cancellation Ineligible", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        int confirm = JOptionPane.showConfirmDialog(this,
-                "Are you sure you want to cancel booking " + bookingId + "?\nA full simulated refund will be processed and seats will be released.",
-                "Confirm Cancellation", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "Are you sure you want to cancel booking #" + bookingId + "?\nSeats will be immediately released back to available status.",
+                "Confirm Cancellation",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
 
         if (confirm == JOptionPane.YES_OPTION) {
             try {
                 bookingService.cancelConfirmedBooking(bookingId);
-                JOptionPane.showMessageDialog(this,
-                        "Booking " + bookingId + " has been successfully cancelled and refunded.",
+                JOptionPane.showMessageDialog(this, "Booking " + bookingId + " cancelled successfully. Seats released.",
                         "Cancellation Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshHistory();
             } catch (BookingNotFoundException | InvalidBookingStateException ex) {
-                JOptionPane.showMessageDialog(this, "Error cancelling booking: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Cannot cancel booking: " + ex.getMessage(), "Cancellation Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

@@ -1,8 +1,9 @@
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-// Module 3: BookingService
+// Module 3: BookingService with SQLite JDBC Persistence
 public class BookingService {
     private final BookingManager manager;
     private final SeatManager seatManager;
@@ -65,6 +66,22 @@ public class BookingService {
 
         seatManager.confirmSeats(booking.getShow(), booking.getSeatIds(), booking.getId());
         booking.confirm();
+
+        // Persist confirmed booking to SQLite
+        try {
+            manager.getDbManager().insertBooking(booking);
+        } catch (SQLException e) {
+            System.err.println("[JDBC WARNING] Failed to persist booking to database: " + e.getMessage());
+        }
+
+        // Award customer loyalty points (e.g., 1 point per $1 spent)
+        Customer customer = booking.getCustomer();
+        if (customer != null) {
+            int earnedPoints = (int) Math.round(booking.getTotalAmount());
+            customer.addLoyaltyPoints(earnedPoints);
+            manager.getDbManager().updateCustomerLoyalty(customer.getId(), customer.getLoyaltyPoints());
+        }
+
         manager.logAudit("Confirmed booking " + booking.getId() + " for " + booking.getCustomer().getName());
     }
 
@@ -82,6 +99,9 @@ public class BookingService {
         seatManager.releaseSeats(booking.getShow(), booking.getSeatIds(), booking.getId());
         booking.cancel("Cancelled by customer request");
 
+        // Update booking status in SQLite
+        manager.getDbManager().updateBookingStatus(bookingId, BookingStatus.CANCELLED, "Cancelled by customer request");
+
         PaymentTransaction refundTxn = new PaymentTransaction(
                 "TXN-REF-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase(),
                 booking.getId(),
@@ -92,6 +112,13 @@ public class BookingService {
                 "REFUND-PROCESSED"
         );
         manager.getTransactions().add(refundTxn);
+
+        try {
+            manager.getDbManager().insertTransaction(refundTxn);
+        } catch (SQLException e) {
+            System.err.println("[JDBC WARNING] Failed to persist refund transaction: " + e.getMessage());
+        }
+
         manager.logAudit("Cancelled booking " + booking.getId() + ". Seats released and simulated refund recorded.");
     }
 }

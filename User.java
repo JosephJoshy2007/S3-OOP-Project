@@ -1,18 +1,30 @@
 // Module 6: Abstract User base class
 public abstract class User {
     private final String id;
+    private String username;
+    private String password;
     private String name;
     private String email;
     private final String role;
 
-    public User(String id, String name, String email, String role) {
+    public User(String id, String username, String password, String name, String email, String role) {
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.email = email;
         this.role = role;
     }
 
+    public User(String id, String name, String email, String role) {
+        this(id, id != null ? id.toLowerCase() : "user", "123", name, email, role);
+    }
+
     public String getId() { return id; }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
     public String getEmail() { return email; }
